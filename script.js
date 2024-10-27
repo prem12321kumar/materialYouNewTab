@@ -96,7 +96,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         const apiKey = userApiKey || defaultApiKey;
         proxyurl = userproxyurl || defaultProxyURL;
 
-        var currentUserLocation = savedLocation; // Get saved location
+        var currentUserLocation = savedLocation || localStorage.getItem("locationQ"); // Get saved location
         if (!currentUserLocation) {
             // Only fetch if there is no saved location
             const geoLocation = 'https://ipinfo.io/json/';
