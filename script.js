@@ -6,6 +6,7 @@
  * If not, see <https://www.gnu.org/licenses/>.
  */
 
+
 let proxyurl;
 let clocktype;
 let hourformat;
@@ -622,7 +623,7 @@ document.addEventListener('click', function (event) {
     }
 });
 
-//search function
+// Search function
 document.addEventListener("DOMContentLoaded", () => {
     const enterBTN = document.getElementById("enterBtn");
     const searchInput = document.getElementById("searchQ");
@@ -822,7 +823,6 @@ if (!micIconCheckbox.checked) {
 }
 //  -----------End of Voice Search------------
 
-
 // Function to apply the selected theme
 const radioButtons = document.querySelectorAll('.colorPlate');
 const themeStorageKey = 'selectedTheme';
@@ -903,6 +903,7 @@ const applySelectedTheme = (colorValue) => {
                 background-color: #333;
                 border: 2px solid #919191;
             }
+
             .dark-theme .search-engine input[type="radio"] {
                 background-color: #9d9d9d   ;
                 border: 0px solid #000000;
@@ -985,20 +986,24 @@ const applySelectedTheme = (colorValue) => {
 
             .shortcutsContainer .shortcuts .shortcutLogoContainer {
                 background: radial-gradient(circle, #bfbfbf 44%, #000 64%);
-
             }
+
             .digiclock {
                 fill: #909090;
             }
+
             #minute, #minute::after, #second::after {
                 background-color: #909090;
             }
+
             .dot-icon {
                 fill: #bfbfbf;
             }
+
             .menuicon{
                 color: var(--darkerColor-dark);
             }
+
             #menuButton::before{
                 background-color: #bfbfbf;
             }
@@ -1006,9 +1011,11 @@ const applySelectedTheme = (colorValue) => {
             #menuButton::after{
                 border: 4px solid #858585;
             }
+
             #menuCloseButton, #menuCloseButton:hover {
                 background-color: var(--darkColor-dark);
             }
+
             #menuCloseButton .icon{
                 background-color: #cdcdcd;
             }
@@ -1064,7 +1071,7 @@ const applySelectedTheme = (colorValue) => {
         "brown": "./favicon/brown.png",
         "silver": "./favicon/silver.png",
         "grey": "./favicon/grey.png",
-        "dark": "./favicon/dark.png",  
+        "dark": "./favicon/dark.png",
     };
 
     // Function to update the extension icon based on browser
@@ -1099,9 +1106,7 @@ radioButtons.forEach(radioButton => {
     });
 });
 
-
 // end of Function to apply the selected theme
-
 
 // when User click on "AI-Tools"
 const element = document.getElementById("toolsCont");
@@ -1430,7 +1435,6 @@ document.getElementById("menuCloseButton").onclick = () => {
 // ---------------------------------------------------------
 document.addEventListener("DOMContentLoaded", function () {
 
-
     /* ------ Constants ------ */
 
     // maximum number of shortcuts allowed
@@ -1508,7 +1512,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 height: calc(100% / sqrt(2)) !important;
                 width: calc(100% / sqrt(2)) !important;
                 }`;
-
 
     /* ------ Element selectors ------ */
 
@@ -1593,7 +1596,6 @@ document.addEventListener("DOMContentLoaded", function () {
         element.innerHTML = localStorage.getItem(key);
     }
 
-
     /* ------ Loading shortcuts ------ */
 
     /**
@@ -1639,7 +1641,6 @@ document.addEventListener("DOMContentLoaded", function () {
             applyShortcut(newSettingsEntry);
         }
     }
-
 
     /* ------ Creating shortcut elements ------ */
 
@@ -1723,7 +1724,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return shortcutContainer;
     }
 
-
     /* ------ Attaching event listeners to shortcut settings ------ */
 
     /**
@@ -1759,7 +1759,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
-
 
     /* ------ Saving and applying changes to shortcuts ------ */
 
@@ -1886,7 +1885,6 @@ document.addEventListener("DOMContentLoaded", function () {
         loadShortcuts();
     }
 
-
     /* ------ Shortcut favicon handling ------ */
 
     /**
@@ -2002,6 +2000,7 @@ document.addEventListener("DOMContentLoaded", function () {
             saveActiveStatus("adaptiveIconField", "inactive");
         }
     });
+
     searchsuggestionscheckbox.addEventListener("change", function () {
         saveCheckboxState("searchsuggestionscheckboxState", searchsuggestionscheckbox);
         if (searchsuggestionscheckbox.checked) {
@@ -2050,6 +2049,7 @@ document.addEventListener("DOMContentLoaded", function () {
             saveActiveStatus("greetingField", "inactive");
         }
     });
+
     hourcheckbox.addEventListener("change", function () {
         saveCheckboxState("hourcheckboxState", hourcheckbox);
         if (hourcheckbox.checked) {
@@ -2058,10 +2058,12 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem("hourformat", "false");
         }
     });
+
     greetingCheckbox.addEventListener("change", () => {
         localStorage.setItem("greetingEnabled", greetingCheckbox.checked);
         updatedigiClock();
     });
+
     useproxyCheckbox.addEventListener("change", function () {
         if (useproxyCheckbox.checked) {
             // Show the disclaimer and check the user's choice
@@ -2082,6 +2084,7 @@ document.addEventListener("DOMContentLoaded", function () {
             saveActiveStatus("proxyinputField", "inactive");
         }
     });
+
     adaptiveIconToggle.addEventListener("change", function () {
         saveCheckboxState("adaptiveIconToggle", adaptiveIconToggle);
         if (adaptiveIconToggle.checked) {
