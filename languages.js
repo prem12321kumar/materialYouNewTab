@@ -6,6 +6,7 @@
  * If not, see <https://www.gnu.org/licenses/>.
  */
 
+
 // Translation data
 const translations = {
     "en": {
@@ -23,6 +24,8 @@ const translations = {
         "adaptiveIconInfoText": "Shortcut icons will appear smaller",
         "ai_tools_button": "AI-Tools",
         "enable_ai_tools": "Show shortcuts for AI tools",
+        "googleAppsMenuText": "Google Apps",
+        "googleAppsMenuInfo": "Show shortcuts for Google Apps",
         // Digital Clock
         "digitalclocktittle": "Digital Clock",
         "digitalclockinfo": "Switch to the digital clock",
@@ -80,6 +83,7 @@ const translations = {
         "searchWithHint": "Search With",
         "ai_tools": "AI Tools",
         "userText": "Click here to edit",
+        "googleAppsHover": "Google Apps",  // Keep untranslated if text width is longer
         // End of Body and New Tab Items
 
         // Greeting
@@ -88,7 +92,21 @@ const translations = {
             "afternoon": "Good Afternoon!",
             "evening": "Good Evening!"
         },
+
+        // Search Engines and rest
+        "googleEngine": "Google",
+        "duckEngine": "Duck", // DuckDuckGo
+        "bingEngine": "Bing",
+        "braveEngine": "Brave",
+        "youtubeEngine": "YouTube",
+        "chatGPT": "ChatGPT",
+        "gemini": "Gemini",
+        "copilot": "Copilot",
+        "perplexity": "Perplexity",
+        "firefly": "Adobe Firefly",
+        "github": "GitHub",
     },
+
 
     // Portuguese
     "pt": {
@@ -106,6 +124,8 @@ const translations = {
         "adaptiveIconInfoText": "Os ícones de atalhos serão sempre redondos",
         "ai_tools_button": "Ferramentas de IA",
         "enable_ai_tools": "Ativar/desativar atalhos de ferramentas de IA",
+        "googleAppsMenuText": "Apps do Google",
+        "googleAppsMenuInfo": "Mostrar atalhos para os Apps do Google",
         // Digital Clock
         "digitalclocktittle": "Relógio Digital",
         "digitalclockinfo": "Ativar/desativar o Relógio Digital",
@@ -170,7 +190,7 @@ const translations = {
             "morning": "Bom dia!",
             "afternoon": "Boa tarde!",
             "evening": "Boa noite!"
-        }
+        },
     },
 
     // Chinese (Simplified)
@@ -189,7 +209,9 @@ const translations = {
         "adaptiveIconText": "自适应图标形状",
         "adaptiveIconInfoText": "快捷方式图标将始终为圆形",
         "ai_tools_button": "AI工具",
-        "enable_ai_tools": "启用/禁用AI工具快捷方式",
+        "enable_ai_tools": "显示AI工具快捷方式",
+        "googleAppsMenuText": "谷歌应用",
+        "googleAppsMenuInfo": "显示谷歌应用的快捷方式",
         // Digital Clock
         "digitalclocktittle": "数字时钟",
         "digitalclockinfo": "启用/禁用数字时钟",
@@ -254,7 +276,21 @@ const translations = {
             "morning": "早上好!",
             "afternoon": "下午好!",
             "evening": "晚上好!"
-        }
+        },
+
+        // Search Engines and rest
+        "googleEngine": "谷歌",
+        "duckEngine": "达克达狗",
+        "bingEngine": "必应",
+        "braveEngine": "布雷夫",
+        "youtubeEngine": "优兔",
+        "chatGPT": "查特吉皮提",
+        "gemini": "双美尼",
+        "copilot": "科波莱特",
+        "perplexity": "佩尔普雷克西蒂",
+        "firefly": " 阿多比 火萤",
+        "github": "吉特哈布",
+        "googleAppsHover": "谷歌应用",
     },
 
     // Hindi
@@ -273,6 +309,8 @@ const translations = {
         "adaptiveIconInfoText": "शॉर्टकट आइकन छोटे आकार में प्रदर्शित करें",
         "ai_tools_button": "AI-उपकरण",
         "enable_ai_tools": "AI उपकरणों के शॉर्टकट्स प्रदर्शित करें",
+        "googleAppsMenuText": "गूगल ऐप्स",
+        "googleAppsMenuInfo": "गूगल ऐप्स के शॉर्टकट्स प्रदर्शित करें",
         // Digital Clock
         "digitalclocktittle": "डिजिटल घड़ी",
         "digitalclockinfo": "डिजिटल घड़ी पर स्विच करें",
@@ -338,7 +376,21 @@ const translations = {
             "morning": "सुप्रभात!",
             "afternoon": "शुभ अपराह्न!",
             "evening": "शुभ संध्या!"
-        }
+        },
+
+        // Search Engines and rest
+        "googleEngine": "गूगल",
+        "duckEngine": "डकडकगो",
+        "bingEngine": "बिंग",
+        "braveEngine": "ब्रेव",
+        "youtubeEngine": "यूट्यूब",
+        "chatGPT": "चैटGPT",
+        "gemini": "जेमिनी",
+        "copilot": "कोपायलट",
+        "perplexity": "पर्प्लेक्सिटी",
+        "firefly": "एडोबी फायरफ्लाई",
+        "github": "गिटहब",
+        "googleAppsHover": "गूगल ऐप्स",
     },
 
     // Czech
@@ -357,6 +409,8 @@ const translations = {
         "adaptiveIconInfoText": "Ikony zkratek se zmenší",
         "ai_tools_button": "AI nástroje",
         "enable_ai_tools": "Zobrazí zkratky AI nástrojů",
+        "googleAppsMenuText": "Google aplikace",
+        "googleAppsMenuInfo": "Zobrazí zkratky Google aplikací",
         // Digital Clock
         "digitalclocktittle": "Digitální hodiny",
         "digitalclockinfo": "Přepne hodiny na digitální",
@@ -414,6 +468,7 @@ const translations = {
         "searchWithHint": "Vyhledávat prostřednictvím",
         "ai_tools": "AI nástroje",
         "userText": "Upravíte po kliknutí",
+        "googleAppsHover": "Google aplikace",
         // End of Body and New Tab Items
 
         // Greeting
@@ -421,7 +476,7 @@ const translations = {
             "morning": "Dobré ráno!",
             "afternoon": "Dobré odpoledne!",
             "evening": "Dobrý večer!"
-        }
+        },
     },
 
     // Italian
@@ -441,6 +496,8 @@ const translations = {
         "adaptiveIconInfoText": "Le icone delle scorciatoie saranno sempre rotonde",
         "ai_tools_button": "Strumenti AI",
         "enable_ai_tools": "Abilita/disabilita scorciatoie Strumenti AI",
+        "googleAppsMenuText": "App Google",
+        "googleAppsMenuInfo": "Mostra collegamenti App Google",
         // Digital Clock
         "digitalclocktittle": "Orologio Digitale",
         "digitalclockinfo": "Abilita/disabilita Orologio Digitale",
@@ -505,7 +562,7 @@ const translations = {
             "morning": "Buongiorno!",
             "afternoon": "Buon pomeriggio!",
             "evening": "Buona sera!"
-        }
+        },
     },
 
     // Turkish
@@ -524,6 +581,8 @@ const translations = {
         "adaptiveIconInfoText": "Kısayol ikonları yuvarlak görünecek",
         "ai_tools_button": "AI Araçları",
         "enable_ai_tools": "AI Araçları kısayollarını göster",
+        "googleAppsMenuText": "Google Uygulamaları",
+        "googleAppsMenuInfo": "Google Uygulamaları için kısayollarını göster",
         // Digital Clock
         "digitalclocktittle": "Dijital Saat",
         "digitalclockinfo": "Dijital saate geçiş yap",
@@ -588,7 +647,7 @@ const translations = {
             "morning": "Günaydın!",
             "afternoon": "İyi öğleden sonra!",
             "evening": "İyi akşamlar!"
-        }
+        },
     },
 
     // Bengali
@@ -607,6 +666,8 @@ const translations = {
         "adaptiveIconInfoText": "শর্টকাট আইকন ছোট আকারে প্রদর্শন হবে",
         "ai_tools_button": "AI সরঞ্জাম",
         "enable_ai_tools": "AI সরঞ্জাম শর্টকাট প্রদর্শন করুন",
+        "googleAppsMenuText": "গুগল অ্যাপস",
+        "googleAppsMenuInfo": "গুগল অ্যাপসের শর্টকাট প্রদর্শন করুন",
         // Digital Clock
         "digitalclocktittle": "ডিজিটাল ঘড়ি",
         "digitalclockinfo": "ডিজিটাল ঘড়িতে পরিবর্তন করুন",
@@ -673,7 +734,21 @@ const translations = {
             "morning": "শুভ সকাল!",
             "afternoon": "শুভ বিকেল!",
             "evening": "শুভ সন্ধ্যা!"
-        }
+        },
+
+        // Search Engines and rest
+        "googleEngine": "গুগল",
+        "duckEngine": "ডাকডাকগো",
+        "bingEngine": "বিং",
+        "braveEngine": "ব্রেভ",
+        "youtubeEngine": "ইউটিউব",
+        "chatGPT": "চ্যাটGPT",
+        "gemini": "জেমিনি",
+        "copilot": "কোপাইলট",
+        "perplexity": "পারপ্লেক্সিটি",
+        "firefly": "এডোবি ফায়ারফ্লাই",
+        "github": "গিটহাব",
+        "googleAppsHover": "গুগল অ্যাপস",
     },
 
     // Vietnamese
@@ -692,6 +767,8 @@ const translations = {
         "adaptiveIconInfoText": "Biểu tượng phím tắt sẽ luôn là hình tròn",
         "ai_tools_button": "Công cụ AI",
         "enable_ai_tools": "Bật/tắt các phím tắt Công cụ AI",
+        "googleAppsMenuText": "Ứng dụng Google",
+        "googleAppsMenuInfo": "Hiển thị các phím tắt cho Ứng dụng Google",
         // Digital Clock
         "digitalclocktittle": "Đồng hồ Kỹ thuật số",
         "digitalclockinfo": "Bật/tắt Đồng hồ Kỹ thuật số",
@@ -756,7 +833,7 @@ const translations = {
             "morning": "Chào buổi sáng!",
             "afternoon": "Chào buổi chiều!",
             "evening": "Chào buổi tối!"
-        }
+        },
     },
 
     // Russian
@@ -775,6 +852,8 @@ const translations = {
         "adaptiveIconInfoText": "Ярлыки всегда будут круглыми",
         "ai_tools_button": "Инструменты ИИ",
         "enable_ai_tools": "Включить/Отключить ярлыки ИИ",
+        "googleAppsMenuText": "Приложения Google",
+        "googleAppsMenuInfo": "Показать ярлыки для приложений Google",
         // Digital Clock
         "digitalclocktittle": "Цифровые часы",
         "digitalclockinfo": "Включить/Отключить цифровые часы",
@@ -820,7 +899,7 @@ const translations = {
 
         // Weather
         "humidityLevel": "Влажность",
-        "feelsLike": "Ощущается как",
+        "feelsLike": "Ощущается",
         "location": "Земля",
         // End of Weather
 
@@ -839,7 +918,21 @@ const translations = {
             "morning": "Доброе утро!",
             "afternoon": "Добрый день!",
             "evening": "Добрый вечер!"
-        }
+        },
+
+        // Search Engines and rest
+        "googleEngine": "Гугл",
+        "duckEngine": "ДакДакГо",
+        "bingEngine": "Бинг",
+        "braveEngine": "Брейв",
+        "youtubeEngine": "Ютуб",
+        "chatGPT": "ЧатGPT",
+        "gemini": "Гемини",
+        "copilot": "Копилот",
+        "perplexity": "Перплексити",
+        "firefly": "Адоби Файерфлай",
+        "github": "ГитХаб",
+        "googleAppsHover": "Гугл Приложения",
     },
 
     // Uzbek
@@ -858,6 +951,8 @@ const translations = {
         "adaptiveIconInfoText": "Tezkor tugmalar doimiy ravishda doiraviy bo'ladi",
         "ai_tools_button": "AI-instrumentlar",
         "enable_ai_tools": "Tezkor tugmalarni ko'rsatish AI-instrumentlar",
+        "googleAppsMenuText": "Google Dasturlari",
+        "googleAppsMenuInfo": "Google Dasturlariga qisqacha havolani ko'rsating",
         // Digital Clock
         "digitalclocktittle": "Digital Clock",
         "digitalclockinfo": "Digital Clockga o'tish",
@@ -924,6 +1019,7 @@ const translations = {
             "evening": "Xayrli kech!"
         },
     },
+
     // Spanish
     "es": {
         // Menu Items
@@ -940,6 +1036,8 @@ const translations = {
         "adaptiveIconInfoText": "Los iconos de accesos directos serán más pequeños",
         "ai_tools_button": "Herramientas de IA",
         "enable_ai_tools": "Mostrar accesos directos de herramientas de IA",
+        "googleAppsMenuText": "Aplicaciones de Google",
+        "googleAppsMenuInfo": "Mostrar accesos directos a las aplicaciones de Google",
         // Digital Clock
         "digitalclocktittle": "Reloj digital",
         "digitalclockinfo": "Cambiar a reloj digital",
@@ -1004,9 +1102,8 @@ const translations = {
             "morning": "¡Buenos días!",
             "afternoon": "¡Buenas tardes!",
             "evening": "¡Buenas noches!"
-        }
+        },
     },
-
 
     // Japanese
     "ja": {
@@ -1024,6 +1121,8 @@ const translations = {
         "adaptiveIconInfoText": "ショートカットアイコンは小さく表示されます",
         "ai_tools_button": "AIツール",
         "enable_ai_tools": "AIツールのショートカットを表示",
+        "googleAppsMenuText": "Google アプリ",
+        "googleAppsMenuInfo": "Google アプリのショートカットを表示",
         // Digital Clock
         "digitalclocktittle": "デジタル時計",
         "digitalclockinfo": "デジタル時計に変更",
@@ -1088,7 +1187,21 @@ const translations = {
             "morning": "おはようございます！",
             "afternoon": "こんにちは！",
             "evening": "こんばんは！"
-        }
+        },
+
+        // Search Engines and rest
+        "googleEngine": "グーグル",
+        "duckEngine": "ダックダックゴー",
+        "bingEngine": "ビング",
+        "braveEngine": "ブレイブ",
+        "youtubeEngine": "ユーチューブ",
+        "chatGPT": "チャットGPT",
+        "gemini": "ジェミニ",
+        "copilot": "コパイロット",
+        "perplexity": "パープレクシティ",
+        "firefly": "アドビファイヤフライ",
+        "github": "ギットハブ",
+        "googleAppsHover": "グーグルアプリ",
     },
 
     // Korean
@@ -1107,6 +1220,8 @@ const translations = {
         "adaptiveIconInfoText": "단축 아이콘이 더 작게 표시됩니다",
         "ai_tools_button": "AI 도구",
         "enable_ai_tools": "AI 도구 단축키 표시",
+        "googleAppsMenuText": "Google 앱",
+        "googleAppsMenuInfo": "Google 앱 바로가기 표시",
         // Digital Clock
         "digitalclocktittle": "디지털 시계",
         "digitalclockinfo": "디지털 시계로 전환",
@@ -1171,7 +1286,206 @@ const translations = {
             "morning": "좋은 아침!",
             "afternoon": "좋은 오후!",
             "evening": "좋은 저녁!"
-        }
+        },
+
+        // Search Engines and rest
+        "googleEngine": "구글",
+        "duckEngine": "덕덕고",
+        "bingEngine": "빙",
+        "braveEngine": "브레이브",
+        "youtubeEngine": "유튜브",
+        "chatGPT": "챗GPT",
+        "gemini": "제미니",
+        "copilot": "코파일럿",
+        "perplexity": "퍼플렉시티",
+        "firefly": "어도비 파이어플라이",
+        "github": "깃허브",
+        "googleAppsHover": "구글 앱",
+    },
+
+    // Indonesian
+    "idn": {
+        // Menu Items
+        "feedback": "Umpan Balik",
+        "resetsettings": "Setelan Awal",
+        "menuCloseText": "Tutup",
+        // Shortcuts
+        "shortcutsText": "Pintasan",
+        "enableShortcutsText": "Menampilkan Pintasan",
+        "editShortcutsText": "Ubah Pintasan",
+        "editShortcutsList": "Pintasan Tersimpan",
+        "shortcutsInfoText": "Pilih pintasan apa yang akan ditampilkan",
+        "adaptiveIconText": "Penyesuaian Bentuk Ikon",
+        "adaptiveIconInfoText": "Ikon pintasan akan terlihat lebih kecil",
+        "ai_tools_button": "Utilitas AI",
+        "enable_ai_tools": "Tampilkan pintasan untuk utilitas AI",
+        "googleAppsMenuText": "Google Apps",
+        "googleAppsMenuInfo": "Tampilkan pintasan untuk Google Apps",
+        // Digital Clock
+        "digitalclocktittle": "Jam Digital",
+        "digitalclockinfo": "Ubah menjadi jam digital",
+        "timeformattittle": "Format 12-Jam",
+        "timeformatinfo": "Menggunakan format 12-jam",
+        "greetingtittle": "Sapaan",
+        "greetinginfo": "Tampilkan sapaan di bawah teks kustom",
+        // Misc
+        "userTextTitle": "Teks Kostumisasi",
+        "userTextInfo": "Tampilkan teks kustom di bawah jam",
+        "fahrenheitCelsiusCheckbox": "Ubah menjadi Fahrenheit",
+        "fahrenheitCelsiusText": "Muat ulang halaman untuk mengaplikasikan perubahan",
+        "micIconTitle": "Sembunyikan Ikon Microfon",
+        "micIconInfo": "Jika voice typing tidak berfungsi",
+        "search_suggestions_button": "Saran Pencarian",
+        "search_suggestions_text": "Mengaktifkan saran pencarian",
+        // Proxy
+        "useproxytitletext": "Pemintas Proksi",
+        "useproxyText": "Jika saran pencarian tidak berfungsi",
+        "ProxyText": "Pemintas proksi CORS",
+        "ProxySubtext": "Tambahkan pemintas proksi CORS anda sendiri",
+        "HostproxyButton": "Host proksi anda sendiri",
+        "saveproxy": "Simpan",
+        // Location
+        "UserLocText": "Masukkan Lokasi Anda",
+        "UserLocSubtext": "Jika lokasi cuaca tidak berfungsi",
+        "userLoc": "Kota atau Koordinat anda (Lintang, Bujur)",
+        "InputOptionsButton": "Pilihan Input",
+        "saveLoc": "Simpan",
+        // Weather
+        "WeatherApiText": "Masukkan kunci WeatherAPI anda",
+        "WeatherApiSubtext": "Jika fungsionalitas cuaca tidak berfungsi",
+        "userAPI": "Kunci weatherAPI anda",
+        "LearnMoreButton": "Pelajari lebih lanjut",
+        "saveAPI": "Simpan",
+        // End of Menu Items
+
+        // Body Items
+        // Calendar
+        "days": ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'],
+        "months": ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+        // End of Calendar
+
+        // Weather
+        "humidityLevel": "Kelembapan",
+        "feelsLike": "Terasa",
+        "location": "Bumi",
+        // End of Weather
+
+        // New Tab Item
+        "conditionText": "Halo! Bagaimana kabarmu hari ini?",
+        "enterBtn": "Telusuri",
+        "searchPlaceholder": "Ketik disini...",
+        "listenPlaceholder": "Mendengarkan...",
+        "searchWithHint": "Cari Dengan",
+        "ai_tools": "Utilitas AI",
+        "userText": "Klik disini untuk mengubah tulisan",
+        // End of Body and New Tab Items
+
+        // Greeting
+        greeting: {
+            "morning": "Selamat Pagi!",
+            "afternoon": "Selamat Sore!",
+            "evening": "Selamat Malam!"
+        },
+    },
+
+    // Marathi
+    "mr": {
+        // Menu Items
+        "feedback": "प्रतिसाद",
+        "resetsettings": "सेटिंग्ज रीसेट करा",
+        "menuCloseText": "बंद करा",
+        // Shortcuts
+        "shortcutsText": "शॉर्टकट्स",
+        "enableShortcutsText": "जतन केलेले शॉर्टकट दाखवा",
+        "editShortcutsText": "शॉर्टकट्स संपादित करा",
+        "editShortcutsList": "जतन केलेले शॉर्टकट्स",
+        "shortcutsInfoText": "कोणते शॉर्टकट दाखवायचे ते निवडा",
+        "adaptiveIconText": "अनुकूल आयकॉन आकार",
+        "adaptiveIconInfoText": "शॉर्टकट आयकॉन छोटे दिसतील",
+        "ai_tools_button": "AI साधने",
+        "enable_ai_tools": "AI साधनांसाठी शॉर्टकट्स दाखवा",
+        "googleAppsMenuText": "गुगल अॅप्स",
+        "googleAppsMenuInfo": "गुगल अॅप्ससाठी शॉर्टकट्स दाखवा",
+        // Digital Clock
+        "digitalclocktittle": "डिजिटल घड्याळ",
+        "digitalclockinfo": "डिजिटल घड्याळावर स्विच करा",
+        "timeformattittle": "१२-तासांचा फॉरमॅट",
+        "timeformatinfo": "१२-तासांचा वेळ फॉरमॅट वापरा",
+        "greetingtittle": "शुभेच्छा",
+        "greetinginfo": "सानुकूल मजकुराखाली शुभेच्छा दाखवा",
+        // Misc
+        "userTextTitle": "सानुकूल मजकूर",
+        "userTextInfo": "घड्याळाखाली सानुकूल मजकूर दाखवा",
+        "fahrenheitCelsiusCheckbox": "फॅरेनहाइटमध्ये बदल करा",
+        "fahrenheitCelsiusText": "बदल लागू करण्यासाठी पृष्ठ रीफ्रेश करा",
+        "micIconTitle": "मायक्रोफोन आयकॉन लपवा",
+        "micIconInfo": "जर व्हॉइस टायपिंग कार्यरत नसेल",
+        "search_suggestions_button": "शोध सूचना",
+        "search_suggestions_text": "शोध सूचना सक्षम करा",
+        // Proxy
+        "useproxytitletext": "प्रॉक्सी बायपास",
+        "useproxyText": "जर शोध सूचना कार्यरत नसतील",
+        "ProxyText": "CORS बायपास प्रॉक्सी",
+        "ProxySubtext": "आपला स्वतःचा CORS बायपास प्रॉक्सी जोडा",
+        "HostproxyButton": "आपला प्रॉक्सी होस्ट करा",
+        "saveproxy": "जतन करा",
+        // Location
+        "UserLocText": "आपले स्थान प्रविष्ट करा",
+        "UserLocSubtext": "जर हवामानाचे स्थान बरोबर नसेल",
+        "userLoc": "आपले शहर किंवा समन्वय (अक्षांश, रेखांश)",
+        "InputOptionsButton": "इनपुट पर्याय",
+        "saveLoc": "जतन करा",
+        // Weather
+        "WeatherApiText": "आपली WeatherAPI कळी प्रविष्ट करा",
+        "WeatherApiSubtext": "जर हवामान कार्यरत नसेल",
+        "userAPI": "आपली WeatherAPI कळी",
+        "LearnMoreButton": "अधिक जाणून घ्या",
+        "saveAPI": "जतन करा",
+        // End of Menu Items
+
+        // Body Items
+        // Calendar
+        "days": ['रवि', 'सोम', 'मंगळ', 'बुध', 'गुरु', 'शुक्र', 'शनि'],   // Truncated for display
+        // "days": ['रविवार', 'सोमवार', 'मंगळवार', 'बुधवार', 'गुरुवार', 'शुक्रवार', 'शनिवार'],     // Full
+        "months": ['जानेवारी', 'फेब्रुवारी', 'मार्च', 'एप्रिल', 'मे', 'जून', 'जुलै', 'ऑगस्ट', 'सप्टेंबर', 'ऑक्टोबर', 'नोव्हेंबर', 'डिसेंबर'],
+        // End of Calendar
+
+        // Weather
+        "humidityLevel": "आर्द्रता",
+        "feelsLike": "वाटते",
+        "location": "पृथ्वी",
+        // End of Weather
+
+        // New Tab Item
+        "conditionText": "नमस्कार! तुम्ही आज कसे आहात?",
+        "enterBtn": "शोधा",
+        "searchPlaceholder": "येथे लिहा...",
+        "listenPlaceholder": "ऐकत आहे...",
+        "searchWithHint": "यासह शोधा",
+        "ai_tools": "AI साधने",
+        "userText": "येथे आपला मजकूर लिहा",
+        "googleAppsHover": "गुगल अॅप्स",
+        // End of Body and New Tab Items
+
+        // Greeting
+        greeting: {
+            "morning": "शुभ सकाळ!",
+            "afternoon": "शुभ दुपार!",
+            "evening": "शुभ संध्याकाळ!"
+        },
+
+        // Search Engines and rest
+        "googleEngine": "गुगल",
+        "duckEngine": "डकडकगो",
+        "bingEngine": "बिंग",
+        "braveEngine": "ब्रेव्ह",
+        "youtubeEngine": "यूट्यूब",
+        "chatGPT": "चॅटGPT",
+        "gemini": "जेमिनी",
+        "copilot": "कोपायलट",
+        "perplexity": "पर्प्लेक्सिटी",
+        "firefly": "अॅडोबी फायरफ्लाय",
+        "github": "गिटहब",
     },
 
 };
@@ -1194,14 +1508,16 @@ const menuWidths = {
 
 const numberMappings = {
     "bn": { '0': '০', '1': '১', '2': '২', '3': '৩', '4': '৪', '5': '৫', '6': '৬', '7': '৭', '8': '৮', '9': '৯' },
-    //"mr": { '0': '०', '1': '१', '2': '२', '3': '३', '4': '४', '5': '५', '6': '६', '7': '७', '8': '८', '9': '९' }, // Ensure it is supported in the fonts
-    // Add more languages as needed
+    "mr": { '0': '०', '1': '१', '2': '२', '3': '३', '4': '४', '5': '५', '6': '६', '7': '७', '8': '८', '9': '९' },
+    // Add more languages as needed, Ensure it is supported in the fonts
 };
 
 function localizeNumbers(text, language) {
     const map = numberMappings[language]; // Get the numeral map for the current language
+
     // Define languages that use a comma as the decimal separator instead of a dot
-    const specialDecimalLanguages = ['cs', 'it', 'pt', 'ru', 'tr', 'vi', 'uz', 'es', 'ko']; // Add more languages here as needed
+    const specialDecimalLanguages = ['cs', 'it', 'pt', 'ru', 'tr', 'vi', 'uz', 'es', 'ko', 'idn']; // Add more languages here as needed
+
     if (specialDecimalLanguages.includes(language)) {
         // Replace decimal point with a comma for specific languages
         text = text.replace('.', ',');
@@ -1228,6 +1544,8 @@ function applyLanguage(lang) {
         { id: 'adaptiveIconInfoText', key: 'adaptiveIconInfoText' },
         { id: 'ai_tools_button', key: 'ai_tools_button' },
         { id: 'enable_ai_tools', key: 'enable_ai_tools' },
+        { id: 'googleAppsMenuText', key: 'googleAppsMenuText' },
+        { id: 'googleAppsMenuInfo', key: 'googleAppsMenuInfo' },
         { id: 'fahrenheitCelsiusCheckbox', key: 'fahrenheitCelsiusCheckbox' },
         { id: 'fahrenheitCelsiusText', key: 'fahrenheitCelsiusText' },
         { id: 'micIconTitle', key: 'micIconTitle' },
@@ -1265,7 +1583,20 @@ function applyLanguage(lang) {
         { id: 'ai_tools', key: 'ai_tools' },
         { id: 'humidityLevel', key: 'humidityLevel' },
         { id: 'feelsLike', key: 'feelsLike' },
-        { id: 'location', key: 'location' }
+        { id: 'location', key: 'location' },
+        { id: 'googleEngine', key: 'googleEngine' },
+        { id: 'duckEngine', key: 'duckEngine' },
+        { id: 'bingEngine', key: 'bingEngine' },
+        { id: 'braveEngine', key: 'braveEngine' },
+        { id: 'youtubeEngine', key: 'youtubeEngine' },
+        { id: 'chatGPT', key: 'chatGPT' },
+        { id: 'gemini', key: 'gemini' },
+        { id: 'copilot', key: 'copilot' },
+        { id: 'perplexity', key: 'perplexity' },
+        { id: 'firefly', key: 'firefly' },
+        { id: 'github', key: 'github' },
+        { id: 'googleAppsHover', key: 'googleAppsHover' },
+
     ];
 
     // Loop through the translation map to apply translations

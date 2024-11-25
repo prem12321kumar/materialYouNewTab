@@ -140,22 +140,23 @@ window.addEventListener('DOMContentLoaded', async () => {
         const localizedTempFahrenheit = localizeNumbers(tempFahrenheit.toString(), currentLanguage);
         const localizedFeelsLikeFahrenheit = localizeNumbers(feelsLikeFahrenheit.toString(), currentLanguage);
 
-        /// Set humidity level
+        // Set humidity level
         const humidityLabel = translations[currentLanguage]?.humidityLevel || translations['en'].humidityLevel; // Fallback to English if translation is missing
-        document.getElementById("humidityLevel").textContent = `${humidityLabel} ${localizedHumidity}%`;
+        document.getElementById("humidityLevel").innerHTML = `${humidityLabel} ${localizedHumidity}%`;
 
         // Event Listener for the Fahrenheit toggle
         const fahrenheitCheckbox = document.getElementById("fahrenheitCheckbox");
         const updateTemperatureDisplay = () => {
             const tempElement = document.getElementById("temp");
+            const feelsLikeLabel = translations[currentLanguage]?.feelsLike || translations['en'].feelsLike;
             if (fahrenheitCheckbox.checked) {
                 tempElement.innerHTML = `${localizedTempFahrenheit}<span class="tempUnit">°F</span>`;
                 const feelsLikeFUnit = currentLanguage === 'cs' ? ' °F' : '°F';  // Add space for Czech in Fahrenheit
-                document.getElementById("feelsLike").textContent = `${translations[currentLanguage]?.feelsLike || translations['en'].feelsLike} ${localizedFeelsLikeFahrenheit}${feelsLikeFUnit}`;
+                document.getElementById("feelsLike").innerHTML = `${feelsLikeLabel} ${localizedFeelsLikeFahrenheit}${feelsLikeFUnit}`;
             } else {
                 tempElement.innerHTML = `${localizedTempCelsius}<span class="tempUnit">°C</span>`;
                 const feelsLikeCUnit = currentLanguage === 'cs' ? ' °C' : '°C';  // Add space for Czech in Celsius
-                document.getElementById("feelsLike").textContent = `${translations[currentLanguage]?.feelsLike || translations['en'].feelsLike} ${localizedFeelsLikeCelsius}${feelsLikeCUnit}`;
+                document.getElementById("feelsLike").innerHTML = `${feelsLikeLabel} ${localizedFeelsLikeCelsius}${feelsLikeCUnit}`;
             }
         };
         updateTemperatureDisplay();
@@ -165,9 +166,17 @@ window.addEventListener('DOMContentLoaded', async () => {
         const weatherIcon = newWIcon.replace("//cdn", "https://cdn");
         document.getElementById("wIcon").src = weatherIcon;
 
+        // Define minimum width for the slider based on the language
+        const humidityMinWidth = {
+            idn: '47%',
+            en: '42%', // Default for English and others
+        };
+        const slider = document.getElementById("slider");
+        slider.style.minWidth = humidityMinWidth[currentLanguage] || humidityMinWidth['en'];
+
         // Set slider width based on humidity
         if (humidity > 40) {
-            document.getElementById("slider").style.width = `calc(${localizedHumidity}% - 60px)`;
+            slider.style.width = `calc(${humidity}% - 60px)`;
         }
 
         // Update location
@@ -182,6 +191,36 @@ window.addEventListener('DOMContentLoaded', async () => {
     }
 });
 // ---------------------------end of weather stuff--------------------
+
+// ------------------------Google App Menu-----------------------------------
+const iconContainer = document.getElementById("iconContainer"); // Menu to toggle visibility
+const tooltipText = googleAppsCont.querySelector(".tooltip-text"); // Tooltip text element
+// Toggle menu when clicking on googleAppsCont
+googleAppsCont.addEventListener("click", function (event) {
+    tooltipText.style.display = "none"; // Hide the tooltip text
+    if (iconContainer.style.display === 'none' || iconContainer.style.display === '') {
+        iconContainer.style.display = 'grid'; // Show menu
+    } else {
+        iconContainer.style.display = 'none'; // Hide menu
+    }
+
+    // Reset tooltip visibility after a delay
+    setTimeout(() => {
+        tooltipText.style.display = ""; // Restore default display
+    }, 1500);
+    event.stopPropagation(); // Prevent click propagation
+});
+
+// Close menu when clicking outside
+document.addEventListener("click", function (event) {
+    if (iconContainer.style.display === 'grid') {
+        const isClickInside = iconContainer.contains(event.target) || googleAppsCont.contains(event.target);
+        if (!isClickInside) {
+            iconContainer.style.display = 'none'; // Hide menu
+        }
+    }
+});
+// ------------------------End of Google App Menu Setup-----------------------------------
 
 // Retrieve current time and calculate initial angles
 var currentTime = new Date();
@@ -251,6 +290,7 @@ function updateDate() {
 
         const dateDisplay = {
             bn: `${dayName}, ${localizedDayOfMonth} ${monthName}`,
+            mr: `${dayName}, ${localizedDayOfMonth} ${monthName}`,
             zh: `${monthName}${dayOfMonth}日${dayName}`,
             cs: `${dayName}, ${dayOfMonth}. ${monthName}`,
             hi: `${dayName}, ${dayOfMonth} ${monthName}`,
@@ -263,6 +303,7 @@ function updateDate() {
             tr: `${dayName.substring(0, 3)}, ${dayOfMonth} ${monthName}`,
             uz: `${dayName.substring(0, 3)}, ${dayOfMonth}-${monthName}`,
             vi: `${dayName}, Ngày ${dayOfMonth} ${monthName}`,
+            idn: `${dayName}, ${dayOfMonth} ${monthName}`,
             default: `${dayName.substring(0, 3)}, ${monthName.substring(0, 3)} ${localizedDayOfMonth}`
         };
         document.getElementById("date").innerText = dateDisplay[currentLanguage] || dateDisplay.default;
@@ -387,6 +428,7 @@ function updatedigiClock() {
     // Determine the translated short date string based on language
     const dateFormats = {
         bn: `${dayName}, ${localizedDayOfMonth}`,
+        mr: `${dayName}, ${localizedDayOfMonth}`,
         zh: `${dayOfMonth}日${dayName}`,
         cs: `${dayName}, ${dayOfMonth}.`,
         hi: `${dayName}, ${dayOfMonth}`,
@@ -395,6 +437,7 @@ function updatedigiClock() {
         pt: `${dayName}, ${dayOfMonth}`,
         ru: `${dayOfMonth} ${dayName.substring(0, 2)}`,
         vi: `${dayOfMonth} ${dayName}`,
+        idn: `${dayOfMonth} ${dayName}`,
         default: `${localizedDayOfMonth} ${dayName.substring(0, 3)}`, // e.g., "24 Thu"
     };
     const dateString = dateFormats[currentLanguage] || dateFormats.default;
@@ -405,7 +448,7 @@ function updatedigiClock() {
 
     // Array of languages to use 'en-US' format
     const specialLanguages = ['tr', 'zh', 'ja', 'ko']; // Languages with NaN in locale time format
-    const localizedLanguages = ['bn'];
+    const localizedLanguages = ['bn', 'mr'];
     // Force the 'en-US' format for Bengali, otherwise, it will be localized twice, resulting in NaN
 
     // Set time options and determine locale based on the current language
@@ -439,7 +482,7 @@ function updatedigiClock() {
     if (hourformat && specialLanguages.includes(currentLanguage)) {
         period = parseInt(hours, 10) < 12 ? 'AM' : 'PM';
     }
-    
+
     // Display AM/PM if in 12-hour format
     if (hourformat) {
         document.getElementById('amPm').textContent = period; // Show AM/PM based on calculated period
@@ -565,21 +608,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// Showing border or outline in when you click on searchbar
+// Showing border or outline when you click on the searchbar
 const searchbar = document.getElementById('searchbar');
-searchbar.addEventListener('click', function () {
-    searchbar.classList.toggle('active');
-    // if (searchInput2.value !== "") {
-    //     showResultBox()
-    // }
+searchbar.addEventListener('click', function (event) {
+    event.stopPropagation(); // Stop the click event from propagating to the document
+    searchbar.classList.add('active');
 });
+
 document.addEventListener('click', function (event) {
     // Check if the clicked element is not the searchbar
     if (!searchbar.contains(event.target)) {
         searchbar.classList.remove('active');
     }
 });
-
 
 //search function
 document.addEventListener("DOMContentLoaded", () => {
@@ -626,7 +667,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Set selected search engine from local storage
     const storedSearchEngine = localStorage.getItem("selectedSearchEngine");
     if (storedSearchEngine) {
-        const selectedRadioButton = document.querySelector(`input[name = "search-engine"][value = "${storedSearchEngine}"]`);
+        const selectedRadioButton = document.querySelector(`input[name="search-engine"][value="${storedSearchEngine}"]`);
         if (selectedRadioButton) {
             selectedRadioButton.checked = true;
         }
@@ -644,14 +685,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const storedTheme = localStorage.getItem(themeStorageKey);
     if (storedTheme) {
         applySelectedTheme(storedTheme);
-        const selectedRadioButton = document.querySelector(`.colorPlate[value = "${storedTheme}"]`);
+        const selectedRadioButton = document.querySelector(`.colorPlate[value="${storedTheme}"]`);
         if (selectedRadioButton) {
             selectedRadioButton.checked = true;
         }
     }
-
 });
-
 
 //  -----------Voice Search------------
 // Function to detect Chrome and Edge on desktop
@@ -725,8 +764,11 @@ function initializeSpeechRecognition() {
         // When speech recognition starts
         recognition.onstart = () => {
             isRecognizing = true; // Set the flag to indicate recognition is active
-            // micIcon.style.color = 'var(--darkerColor-blue)';
-            // micIcon.style.transform = 'scale(1.1)';
+            const selectedRadio = document.querySelector('.colorPlate:checked');
+            if (selectedRadio.value !== 'dark') {
+                micIcon.style.color = 'var(--darkerColor-blue)';
+                // micIcon.style.transform = 'scale(1.05)';
+            }
             searchInput.placeholder = `${translations[currentLanguage]?.listenPlaceholder || translations['en'].listenPlaceholder}`;
             micIcon.classList.add('micActive');
         };
@@ -755,7 +797,7 @@ function initializeSpeechRecognition() {
         // When speech recognition ends (either by user or automatically)
         recognition.onend = () => {
             isRecognizing = false; // Reset the flag to indicate recognition has stopped
-            // micIcon.style.color = 'var(--darkColor-blue)'; // Reset mic color
+            micIcon.style.color = 'var(--darkColor-blue)'; // Reset mic color
             // micIcon.style.transform = 'scale(1)'; // Reset scaling
             micIcon.classList.remove('micActive');
             searchInput.placeholder = `${translations[currentLanguage]?.searchPlaceholder || translations['en'].searchPlaceholder}`;
@@ -800,11 +842,11 @@ const resetDarkTheme = () => {
 
     // Reset inline styles that were applied specifically for dark mode
     const resetElements = [
-        "searchQ", 
-        "searchIconDark", 
-        "darkFeelsLikeIcon", 
-        "menuButton", 
-        "menuCloseButton", 
+        "searchQ",
+        "searchIconDark",
+        "darkFeelsLikeIcon",
+        "menuButton",
+        "menuCloseButton",
         "closeBtnX"
     ];
 
@@ -846,7 +888,7 @@ const applySelectedTheme = (colorValue) => {
 
     // If the selected theme is dark
     else if (colorValue === "dark") {
-        
+
         // Apply dark theme styles using CSS variables
         document.documentElement.style.setProperty('--bg-color-blue', `var(--bg-color-${colorValue})`);
         document.documentElement.style.setProperty('--accentLightTint-blue', `var(--accentLightTint-${colorValue})`);
@@ -945,6 +987,12 @@ const applySelectedTheme = (colorValue) => {
             #minute, #minute::after, #second::after {
                 background-color: #909090;
             }
+            .dot-icon {
+                fill: #bfbfbf;
+            }
+            .menuicon{
+                color: var(--darkerColor-dark);
+            }
             #menuButton::before{
                 background-color: #bfbfbf;
             }
@@ -979,6 +1027,10 @@ const applySelectedTheme = (colorValue) => {
             .dark-theme #githab,
             .dark-theme #sujhaw {
                 fill: #b1b1b1;
+            }
+
+            .resultItem.active {
+                background-color: var(--darkColor-dark);;
             }
         `;
         document.head.appendChild(darkThemeStyleTag);
@@ -1048,15 +1100,17 @@ radioButtons.forEach(radioButton => {
 const element = document.getElementById("toolsCont");
 const shortcuts = document.getElementById("shortcutsContainer");
 
-document.getElementById("0NIHK").onclick = () => {
-    const unfoldShortcutsButton = document.getElementById("unfoldShortcutsBtn");
+function toggleShortcuts(event) {
+    // const element = document.getElementById("0NIHK");
+    // const shortcuts = document.getElementById("shortcuts");
+    const shortcutsCheckbox = document.getElementById("shortcutsCheckbox");
+
     if (shortcutsCheckbox.checked) {
         if (element.style.display === "flex") {
             shortcuts.style.display = 'flex';
             element.style.opacity = "0";
             element.style.gap = "0";
             element.style.transform = "translateX(-100%)";
-            unfoldShortcutsButton.style.display = "none";
 
             setTimeout(() => {
                 element.style.display = "none";
@@ -1064,7 +1118,6 @@ document.getElementById("0NIHK").onclick = () => {
             }, 500);
         } else {
             shortcuts.style.display = 'none';
-            unfoldShortcutsButton.style.display = "block";
             element.style.display = "flex";
             setTimeout(() => {
                 element.style.opacity = "1";
@@ -1077,7 +1130,6 @@ document.getElementById("0NIHK").onclick = () => {
     } else {
         if (element.style.display === "flex") {
             shortcuts.style.display = 'none';
-            unfoldShortcutsButton.style.display = "none";
             element.style.opacity = "0";
             element.style.gap = "0";
             element.style.transform = "translateX(-100%)";
@@ -1086,7 +1138,6 @@ document.getElementById("0NIHK").onclick = () => {
             }, 500);
         } else {
             shortcuts.style.display = 'none';
-            unfoldShortcutsButton.style.display = "none";
             element.style.display = "flex";
             setTimeout(() => {
                 element.style.opacity = "1";
@@ -1097,9 +1148,20 @@ document.getElementById("0NIHK").onclick = () => {
             }, 300);
         }
     }
+    // Prevent outside click handler from triggering
+    if (event) event.stopPropagation();
 }
 
-// ------------search suggestions ---------------
+// Collapse when clicking outside toolsCont
+document.addEventListener("click", (event) => {
+    if (!element.contains(event.target) && element.style.display === "flex") {
+        toggleShortcuts();
+    }
+});
+
+document.getElementById("0NIHK").onclick = toggleShortcuts;
+
+// ------------Search Suggestions---------------
 
 // Show the result box
 function showResultBox() {
@@ -1112,8 +1174,10 @@ function hideResultBox() {
     resultBox.classList.remove('show');
     //resultBox.style.display = "none";
 }
-showResultBox()
-hideResultBox()
+
+showResultBox();
+hideResultBox();
+
 document.getElementById("searchQ").addEventListener("input", async function () {
     const searchsuggestionscheckbox = document.getElementById("searchsuggestionscheckbox");
     if (searchsuggestionscheckbox.checked) {
@@ -1129,31 +1193,87 @@ document.getElementById("searchQ").addEventListener("input", async function () {
         const resultBox = document.getElementById("resultBox");
 
         if (query.length > 0) {
-            // Fetch autocomplete suggestions
-            const suggestions = await getAutocompleteSuggestions(query);
+            try {
+                // Fetch autocomplete suggestions
+                const suggestions = await getAutocompleteSuggestions(query);
 
-            if (suggestions == "") {
-                hideResultBox()
-            } else {
-                // Clear the result box
-                resultBox.innerHTML = '';
+                if (suggestions == "") {
+                    hideResultBox();
+                } else {
+                    // Clear the result box
+                    resultBox.innerHTML = '';
 
-                // Add suggestions to the result box
-                suggestions.forEach((suggestion) => {
-                    const resultItem = document.createElement("div");
-                    resultItem.classList.add("resultItem");
-                    resultItem.textContent = suggestion;
-                    resultItem.onclick = () => {
-                        var resultlink = searchEngines[selectedOption] + encodeURIComponent(suggestion);
-                        window.location.href = resultlink;
-                    };
-                    resultBox.appendChild(resultItem);
-                });
-                showResultBox()
+                    // Add suggestions to the result box
+                    suggestions.forEach((suggestion, index) => {
+                        const resultItem = document.createElement("div");
+                        resultItem.classList.add("resultItem");
+                        resultItem.textContent = suggestion;
+                        resultItem.setAttribute("data-index", index);
+                        resultItem.onclick = () => {
+                            var resultlink = searchEngines[selectedOption] + encodeURIComponent(suggestion);
+                            window.location.href = resultlink;
+                        };
+                        resultBox.appendChild(resultItem);
+                    });
+                    showResultBox();
+                }
+            } catch (error) {
+                // Handle the error (if needed)
             }
-
         } else {
-            hideResultBox()
+            hideResultBox();
+        }
+    }
+});
+
+let isMouseOverResultBox = false;
+// Track mouse entry and exit within the resultBox
+resultBox.addEventListener("mouseenter", () => {
+    isMouseOverResultBox = true;
+    // Remove keyboard highlight
+    const activeItem = resultBox.querySelector(".active");
+    if (activeItem) {
+        activeItem.classList.remove("active");
+    }
+});
+
+resultBox.addEventListener("mouseleave", () => {
+    isMouseOverResultBox = false;
+});
+
+document.getElementById("searchQ").addEventListener("keydown", function (e) {
+    if (isMouseOverResultBox) {
+        return; // Ignore keyboard events if the mouse is in the resultBox
+    }
+    const activeItem = resultBox.querySelector(".active");
+    let currentIndex = activeItem ? parseInt(activeItem.getAttribute("data-index")) : -1;
+
+    if (resultBox.children.length > 0) {
+        if (e.key === "ArrowDown") {
+            e.preventDefault();
+            if (activeItem) {
+                activeItem.classList.remove("active");
+            }
+            currentIndex = (currentIndex + 1) % resultBox.children.length;
+            resultBox.children[currentIndex].classList.add("active");
+
+            // Ensure the active item is visible within the result box
+            const activeElement = resultBox.children[currentIndex];
+            activeElement.scrollIntoView({ block: "nearest" });
+        } else if (e.key === "ArrowUp") {
+            e.preventDefault();
+            if (activeItem) {
+                activeItem.classList.remove("active");
+            }
+            currentIndex = (currentIndex - 1 + resultBox.children.length) % resultBox.children.length;
+            resultBox.children[currentIndex].classList.add("active");
+
+            // Ensure the active item is visible within the result box
+            const activeElement = resultBox.children[currentIndex];
+            activeElement.scrollIntoView({ block: "nearest" });
+        } else if (e.key === "Enter" && activeItem) {
+            e.preventDefault();
+            activeItem.click();
         }
     }
 });
@@ -1216,16 +1336,17 @@ async function getAutocompleteSuggestions(query) {
     }
 }
 
-
 // Hide results when clicking outside
 document.addEventListener("click", function (event) {
     const searchbar = document.getElementById("searchbar");
-    const resultBox = document.getElementById("resultBox");
+    // const resultBox = document.getElementById("resultBox");
 
     if (!searchbar.contains(event.target)) {
-        hideResultBox()
+        hideResultBox();
     }
 });
+// ------------End of Search Suggestions---------------
+
 // ------------Showing & Hiding Menu-bar ---------------
 const menuButton = document.getElementById("menuButton");
 const menuBar = document.getElementById("menuBar");
@@ -1386,6 +1507,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const shortcuts = document.getElementById("shortcuts-section");
     const aiToolsCont = document.getElementById("aiToolsCont");
+    const googleAppsCont = document.getElementById("googleAppsCont");
     const shortcutsCheckbox = document.getElementById("shortcutsCheckbox");
     const proxybypassField = document.getElementById("proxybypassField");
     const proxyinputField = document.getElementById("proxyField");
@@ -1395,6 +1517,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const adaptiveIconField = document.getElementById("adaptiveIconField");
     const adaptiveIconToggle = document.getElementById("adaptiveIconToggle");
     const aiToolsCheckbox = document.getElementById("aiToolsCheckbox");
+    const googleAppsCheckbox = document.getElementById("googleAppsCheckbox");
     const timeformatField = document.getElementById("timeformatField");
     const hourcheckbox = document.getElementById("12hourcheckbox");
     const digitalCheckbox = document.getElementById("digitalCheckbox");
@@ -1406,9 +1529,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const newShortcutButton = document.getElementById("newShortcutButton");
     const resetShortcutsButton = document.getElementById("resetButton");
     const iconStyle = document.getElementById("iconStyle");
-    const flexMonitor = document.getElementById("flexMonitor"); // monitors whether shortcuts have flex-wrap flexed
-    const defaultHeight = document.getElementById("defaultMonitor").clientHeight; // used to compare to previous element
-    const unfoldShortcutsButton = document.getElementById("unfoldShortcutsBtn");
+
+    // const flexMonitor = document.getElementById("flexMonitor"); // monitors whether shortcuts have flex-wrap flexed
+    // const defaultHeight = document.getElementById("defaultMonitor").clientHeight; // used to compare to previous element
 
     /* ------ Helper functions for saving and loading states ------ */
 
@@ -1474,6 +1597,7 @@ document.addEventListener("DOMContentLoaded", function () {
     * It then calls apply for all the shortcuts, to synchronize the changes settings entries with the actual shortcut
     * container.
     */
+
     function loadShortcuts() {
         let amount = localStorage.getItem("shortcutAmount");
 
@@ -1666,7 +1790,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-
     /* ------ Adding, deleting, and resetting shortcuts ------ */
 
     /**
@@ -1767,31 +1890,31 @@ document.addEventListener("DOMContentLoaded", function () {
     * @param urls the array of potential URLs of favicons
     * @returns {Promise<unknown>}
     */
-    function filterFavicon(urls) {
-        return new Promise((resolve, reject) => {
-            let found = false;
+    // function filterFavicon(urls) {
+    //     return new Promise((resolve, reject) => {
+    //         let found = false;
 
-            for (const url of urls) {
-                const img = new Image();
-                img.referrerPolicy = "no-referrer"; // Don't send referrer data
-                img.src = url;
+    //         for (const url of urls) {
+    //             const img = new Image();
+    //             img.referrerPolicy = "no-referrer"; // Don't send referrer data
+    //             img.src = url;
 
-                img.onload = () => {
-                    if (!found) { // Make sure to resolve only once
-                        found = true;
-                        resolve(url);
-                    }
-                };
-            }
+    //             img.onload = () => {
+    //                 if (!found) { // Make sure to resolve only once
+    //                     found = true;
+    //                     resolve(url);
+    //                 }
+    //             };
+    //         }
 
-            // If none of the URLs worked after all have been tried
-            setTimeout(() => {
-                if (!found) {
-                    reject();
-                }
-            }, FAVICON_REQUEST_TIMEOUT);
-        });
-    }
+    //         // If none of the URLs worked after all have been tried
+    //         setTimeout(() => {
+    //             if (!found) {
+    //                 reject();
+    //             }
+    //         }, FAVICON_REQUEST_TIMEOUT);
+    //     });
+    // }
 
     /**
     * This function returns the url to the favicon of a website, given a URL.
@@ -1820,7 +1943,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const logo = document.createElement("img");
 
         const hostname = new URL(urlString).hostname;
-        logo.src = GOOGLE_FAVICON_API_FALLBACK(hostname);
+        if (hostname === "github.com") {
+            logo.src = "./shortcuts_icons/github-shortcut.svg";
+        } else {
+            logo.src = GOOGLE_FAVICON_API_FALLBACK(hostname);
+        }
 
         return logo;
     }
@@ -1836,7 +1963,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return html ? document.createRange().createContextualFragment(html).firstElementChild : null;
     }
 
-
     /* ------ Proxy ------ */
 
     /**
@@ -1845,9 +1971,8 @@ document.addEventListener("DOMContentLoaded", function () {
     function showProxyDisclaimer() {
         const message = "All proxy features are off by default.\n\nIf you enable search suggestions and CORS bypass proxy, it is strongly recommended to host your own proxy for enhanced privacy.\n\nBy default, the proxy will be set to https://mynt-proxy.rhythmcorehq.com, meaning all your data will go through this service, which may pose privacy concerns.";
 
-        confirm(message);
+        return confirm(message);
     }
-
 
     /* ------ Event Listeners ------ */
 
@@ -1931,12 +2056,21 @@ document.addEventListener("DOMContentLoaded", function () {
         updatedigiClock();
     });
     useproxyCheckbox.addEventListener("change", function () {
-        saveCheckboxState("useproxyCheckboxState", useproxyCheckbox);
         if (useproxyCheckbox.checked) {
-            showProxyDisclaimer();
-            proxyinputField.classList.remove("inactive");
-            saveActiveStatus("proxyinputField", "active");
+            // Show the disclaimer and check the user's choice
+            const userConfirmed = showProxyDisclaimer();
+            if (userConfirmed) {
+                // Only enable the proxy if the user confirmed
+                saveCheckboxState("useproxyCheckboxState", useproxyCheckbox);
+                proxyinputField.classList.remove("inactive");
+                saveActiveStatus("proxyinputField", "active");
+            } else {
+                // Revert the checkbox state if the user did not confirm
+                useproxyCheckbox.checked = false;
+            }
         } else {
+            // If the checkbox is unchecked, disable the proxy
+            saveCheckboxState("useproxyCheckboxState", useproxyCheckbox);
             proxyinputField.classList.add("inactive");
             saveActiveStatus("proxyinputField", "inactive");
         }
@@ -1944,7 +2078,6 @@ document.addEventListener("DOMContentLoaded", function () {
     adaptiveIconToggle.addEventListener("change", function () {
         saveCheckboxState("adaptiveIconToggle", adaptiveIconToggle);
         if (adaptiveIconToggle.checked) {
-            //alert("This setting is still experimental");
             saveIconStyle("iconStyle", ADAPTIVE_ICON_CSS);
             iconStyle.innerHTML = ADAPTIVE_ICON_CSS;
         } else {
@@ -1961,6 +2094,18 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             aiToolsCont.style.display = "none";
             saveDisplayStatus("aiToolsDisplayStatus", "none");
+            toggleShortcuts()
+        }
+    });
+
+    googleAppsCheckbox.addEventListener("change", function () {
+        saveCheckboxState("googleAppsCheckboxState", googleAppsCheckbox);
+        if (googleAppsCheckbox.checked) {
+            googleAppsCont.style.display = "flex";
+            saveDisplayStatus("googleAppsDisplayStatus", "flex");
+        } else {
+            googleAppsCont.style.display = "none";
+            saveDisplayStatus("googleAppsDisplayStatus", "none");
         }
     });
 
@@ -1972,56 +2117,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     resetShortcutsButton.addEventListener("click", () => resetShortcuts());
 
-    // Create a ResizeObserver to watch the height changes of the shortcut container and see if it is wrapped
-    /*new ResizeObserver(e => {
-        if (shortcutsContainer.classList.contains("showBackground")) {
-            openShortcutDrawer()
-        }
-        const height = e[0].contentRect.height;
-        if (height === defaultHeight) {
-            setTimeout(() => {
-                unfoldShortcutsButton.style.display = "block";
-            });
-        } else {
-            setTimeout(() => {
-                unfoldShortcutsButton.style.display = "block";
-            });
-        }
-    }).observe(flexMonitor);*/
-
 
     /* ------ Page Transitions & Animations ------ */
-
-    /**
-    * This function sets the state of the shortcut drawer to open.
-    *
-    * This means it can be used both to open and to update the shortcut drawer.
-    */
-    function openShortcutDrawer() {
-        //const translationDistance = flexMonitor.clientHeight - defaultHeight;
-        const translationDistance = "90";
-        shortcutsContainer.style.display = "flex";
-        console.log(translationDistance)
-        requestAnimationFrame(() => {
-            shortcutsContainer.style.transform = `translateY(-${translationDistance}px)`;
-            shortcutsContainer.classList.add("showBackground");
-            unfoldShortcutsButton.style.transform = "rotate(180deg)";
-            unfoldShortcutsButton.closest(".unfoldContainer").style.transform = `translateY(-${translationDistance}px)`;
-        });
-    }
-
-    /**
-    * This function closes the shortcut drawer
-    */
-    function resetShortcutDrawer() {
-        requestAnimationFrame(() => {
-            shortcutsContainer.style.display = "none";
-            shortcutsContainer.style.transform = "translateY(0)";
-            shortcutsContainer.classList.remove("showBackground");
-            unfoldShortcutsButton.style.transform = "rotate(0)";
-            unfoldShortcutsButton.closest(".unfoldContainer").style.transform = "translateY(0)";
-        });
-    }
 
     // When clicked, open new page by sliding it in from the right.
     shortcutEditButton.onclick = () => {
@@ -2063,24 +2160,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 650);
     }
 
-    // Shift up shortcuts
-    unfoldShortcutsButton.onclick = (e) => {
-
-        if (!shortcutsContainer.classList.contains("showBackground")) {
-            e.stopPropagation();
-            openShortcutDrawer();
-        }
-    }
-
-    document.addEventListener('click', function (event) {
-        // Check if the clicked element is not the shortcut container, yet the container is unfolded
-        if (shortcutsContainer.classList.contains("showBackground") && !shortcutsContainer.contains(event.target)) {
-            resetShortcutDrawer();
-        }
-    });
-
-
-
     /* ------ Loading ------ */
 
     // Load and apply the saved checkbox states and display statuses
@@ -2098,8 +2177,10 @@ document.addEventListener("DOMContentLoaded", function () {
     loadCheckboxState("adaptiveIconToggle", adaptiveIconToggle);
     loadIconStyle("iconStyle", iconStyle);
     loadCheckboxState("aiToolsCheckboxState", aiToolsCheckbox);
+    loadCheckboxState("googleAppsCheckboxState", googleAppsCheckbox);
     loadDisplayStatus("shortcutsDisplayStatus", shortcuts);
     loadDisplayStatus("aiToolsDisplayStatus", aiToolsCont);
+    loadDisplayStatus("googleAppsDisplayStatus", googleAppsCont);
     loadCheckboxState("fahrenheitCheckboxState", fahrenheitCheckbox);
     loadShortcuts();
 });

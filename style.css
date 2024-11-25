@@ -102,8 +102,7 @@
     --textColorDark-brown: #16100d;
 
     /* ⚫⚫⚫ */
-
-    --bg-color-dark: #000;
+    --bg-color-dark: #171615;
     --accentLightTint-dark: #3c3c3c;
     --darkerColor-dark: #eeeeee;
     --darkColor-dark: #212121;
@@ -122,51 +121,53 @@
     --always-show-dock-background: 0;
 }
 .resultBox {
-    max-height: 250px;
-    overflow-y: auto;
-   
-    position: absolute;
-    top: 1;
-    left: 0;
-    width: 100%;
-    border-radius: var(--round);
+     max-height: 222px;
+     overflow-y: auto;
+    
+     position: absolute;
+     bottom: -100px;;
+     left: 0;
+     width: 100%;
+     border-radius: 25px;
+ 
+     padding: 5px 10px;
+     scrollbar-width: none; /* For Firefox */
+ 
+     /* Initially hidden */
+     opacity: 0;
+     z-index: -1000;
+     transform: translateY(-70px);
+     transition: opacity 0.5s ease, transform 0.5s ease, z-index 0.5s ease; 
+     pointer-events: none; 
+ }
+ 
+ .resultBox::-webkit-scrollbar {
+     display: none; /* For Chrome, Safari, and Edge */
+ }
+ 
+ /* Visible state: when you want the result box to appear */
+ .resultBox.show {
+     opacity: 1;
+     visibility: visible; 
+     transform: translateY(0); 
+     z-index: 1000;
+     pointer-events: all;
+ }
+ 
+ .resultItem {
+     padding: 8px;
+     cursor: pointer;
+     font-size: 1.1rem;
+     color: var(--textColorDark-blue);
+ }
 
-    padding: 10px;
-    scrollbar-width: none; /* For Firefox */
-
-    /* Initially hidden */
-    opacity: 0;
-    z-index: -1000;
-    transform: translateY(-70px);
-    transition: opacity 0.5s ease, transform 0.5s ease, z-index 0.5s ease; 
-    pointer-events: none; 
-}
-
-.resultBox::-webkit-scrollbar {
-    display: none; /* For Chrome, Safari, and Edge */
-}
-
-/* Visible state: when you want the result box to appear */
-.resultBox.show {
-    opacity: 1;
-    visibility: visible; 
-    transform: translateY(0); 
-    z-index: 1000;
-    pointer-events: all;
-}
-
-.resultItem {
-    padding: 10px;
-    cursor: pointer;
-    font-size: 1.2rem;
-    color: var(--textColorDark-blue);
-}
-
+.resultItem.active,
 .resultItem:hover {
-   background-color: var(--darkColor-blue);
-   border-radius: 15px;
-   color: #fff;
-}
+    background-color: var(--darkColor-blue);
+    border-radius: 15px;
+    color: #fff;
+ }
+
 .spacer {
     height: 110px; /* Adjust this value to create space */
 }
@@ -205,6 +206,201 @@ body {
     width: 100%;
     min-height: 100%;
 }
+
+/* ----------------- Google App Menu CSS Setup ----------------- */
+/* Dot Icon Container Styling */
+.googleAppsCont {
+  position: fixed;
+  display: inline-block;
+  margin: 10px;
+  top: var(--gap);
+  right: var(--gap);
+  font-size: 25px; /* Set the size of the dots */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 2; /* Set z-index */
+}
+
+/* Styling for the SVG icon */
+.dot-icon {
+  fill: var(--darkColor-blue); /* Icon color */
+  background-color: var(--accentLightTint-blue);
+  border-radius: 25%;
+  padding: 1px;
+  cursor: pointer;
+  transition: transform 0.3s ease, fill 0.3s ease;
+}
+
+/* Hover effect for the icon */
+.dot-icon:hover {
+  transform: rotate(90deg) scale(1.05);
+  fill: var(--darkerColor-blue);
+}
+
+/* Tooltip Text Styling */
+.tooltip-text {
+  visibility: hidden;
+  background-color: var(--darkColor-blue);
+  color:rgba(255, 255, 255, 0.9);
+  text-align: center;
+  padding: 5px;
+  border-radius: 7px;
+  position: absolute;
+  top: 108%; /* Position below the icon */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+  z-index: 3; /* Set z-index */
+}
+
+/* Show tooltip on hover */
+.googleAppsCont:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Hide tooltip when menu is open */
+.googleAppsCont:hover + .icon-container .tooltip-text {
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* Hide tooltip when icon button is clicked */
+.googleAppsCont.clicked .tooltip-text {
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* Separator Styling */
+.separator {
+  width: 100%;
+  height: 1px;
+  background-color: var(--darkColor-blue); /* Adjust color as needed */
+  margin: 10px 0; /* Adjust spacing as needed */
+}
+
+/* Add Separator in Icon Container */
+.icon-container .separator {
+  grid-column: span 3; /* Ensure separator spans across all columns */
+}
+
+/* Icon Container Styling (Placed Below Dot Icon) */
+.icon-container {
+  display: grid;
+  gap: 10px;
+  padding: 20px 10px; /* Adjusted padding to account for scrollbar */
+  background-color: var(--accentLightTint-blue);
+  border-radius: 30px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  border: 8px solid var(--bg-color-blue);
+  grid-template-columns: repeat(3, 1fr); /* 3 icons per row */
+  justify-items: center; /* Center icons within each grid cell */
+  position: absolute; /* Absolute positioning for dynamic alignment */
+  top: 85px; /* Place below the dot icon */
+  right: 10px;
+  max-height: calc(40px * 3 + 10px * 2 + 290px); /* Limit to 12 icons (3 rows * icon size + gaps) */
+  overflow-y: auto; /* Add vertical scrollbar when needed */
+  box-sizing: border-box; /* Ensure padding is included in width and height */
+  z-index: 1; /* Set z-index */
+}
+
+/* Individual Icon Item Styling */
+.icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  min-width: 100px; /* Ensure consistent width */
+  background-color: var(--accentLightTint-blue); /* Default background */
+}
+
+/* Icon Styling */
+.menuicon {
+  color: var(--darkColor-blue);
+  width: 40px;
+  height: 40px;
+  margin-bottom: 8px;
+}
+
+/* Label Styling */
+.label {
+  font-size: 14px;
+  color: var(--textColorDark-blue);
+}
+
+/* Short Label (Default) */
+.label.short {
+  display: block;
+}
+
+/* Full Label (Hidden by Default) */
+.label.full {
+  display: none;
+  white-space: pre-line; /* Ensure text retains line breaks */
+  text-align: center; /* Center align text */
+  position: absolute;
+  font-size: 0.8rem;
+  bottom: 0;
+}
+
+/* Hover Effect for Icon Item */
+.icon-item:hover {
+  background-color: var(--bg-color-blue);
+  transform: scale(1.1); /* Add zoom-in effect */
+}
+
+/* Show Full Label on Hover for Multi-word Labels */
+.icon-item:hover .label.full {
+  display: block;
+}
+
+.icon-item:hover .label.short {
+  display: block; /* Ensure single-word labels remain visible */
+}
+
+.icon-item:hover .label.short.one {
+  display: none; /* Ensure single-word labels remain visible */
+}
+
+/* Customize scrollbar to appear on the border */
+/* For Chrome, Edge, Safari */
+.icon-container::-webkit-scrollbar {
+  width: 5px; /* Match the border width */
+}
+.icon-container::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 30px;
+}
+.icon-container::-webkit-scrollbar-thumb {
+  background-color: var(--darkColor-blue);
+  border-radius: 30px;
+}
+.icon-container::-webkit-scrollbar-thumb:hover {
+  background-color: var(--darkerColor-blue);
+  border-radius: 30px;
+}
+
+* For Firefox */
+.icon-container {
+    scrollbar-width: thin; /* Thin scrollbar */
+    scrollbar-color: var(--darkColor-blue) transparent; /* Thumb color and track color */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+/* .icon-container:hover {
+    scrollbar-color: var(--darkerColor-blue) transparent; /* Change the thumb color on hover 
+} */
+
+/* ----------------- End of Google App Menu ----------------- */  
 
 .centerDiv {
     display: grid;
@@ -494,7 +690,6 @@ body {
 
 #humidityLevel {
     color: #fff;
-    /* background-color: yellow; */
     width: fit-content;
     position: absolute;
     bottom: 0;
@@ -536,14 +731,12 @@ body {
     transform: translateX(14px);
     width: 100px;
     height: 80%;
-    /* background-color: #17a638; */
 }
 
 #temp {
     font-size: 3.5rem;
     font-weight: bold;
     color: var(--darkerColor-blue);
-    /* background-color: yellow; */
     margin: auto;
     width: fit-content;
 }
@@ -561,7 +754,6 @@ body {
     height: 80px;
     margin-top: -11px;
     margin-left: -30px;
-    /* background-color: olive; */
 }
 
 /* ------------End of Weather Pill------------- */
@@ -608,7 +800,6 @@ body {
     outline: none;
     border: none;
     background-color: #00000000;
-    border-radius: 100px;
     padding: 0 4px;
     margin-left: 53px;
     font-size: 1rem;
@@ -651,8 +842,8 @@ body {
     border: 2px solid transparent;
 }
 
-
-.micActive::after {
+.micActive::after,
+.micIcon:hover::after {
     border-left: 2px dotted var(--darkColor-blue);
     border-right: 2px solid var(--darkColor-blue);
     border-top: 2px dashed var(--darkerColor-blue);
@@ -883,27 +1074,6 @@ body {
     margin: auto;
 }
 
-#shortcuts-section .unfoldContainer {
-    transition: transform 0.5s;
-    position: absolute;
-    width: 100%;
-    top: 0;
-    display: flex;
-    justify-content: center;
-}
-
-#shortcuts-section #unfoldShortcutsBtn {
-    display: none;
-    pointer-events: auto;
-    fill: var(--textColorDark-blue);
-    background: none;
-    border: none;
-    cursor: pointer;
-    z-index: 1;
-    transition: 0.2s all;
-    transform-origin: 50% 25%;
-}
-
 #shortcuts-section .wrapper {
     position: relative;
     height: fit-content;
@@ -1046,12 +1216,11 @@ body {
     /* background-color: yellow; */
     overflow-x: hidden;
     border-radius: 100px;
-    position: absolute;
+    position: fixed;
     left: var(--gap);
     bottom: var(--gap);
     margin: auto;
     display: flex;
-    cursor: pointer;
 }
 
 .aiToolsCont .hangno {
@@ -1063,6 +1232,7 @@ body {
     padding: 0 16px;
     border-radius: 100px;
     z-index: 2;
+    cursor: pointer;
 }
 
 .aiToolsCont .hangno .icon {
