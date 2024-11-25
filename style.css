@@ -87,6 +87,27 @@
     --darkColor-purple: #9563B5;
     --textColorDark-purple: #2D1B3E;
 
+    /* 🩶🩶🩶 Grey */
+    --bg-color-grey: #565656;
+    --accentLightTint-grey: #818181;
+    --darkerColor-grey: #262626;
+    --darkColor-grey: #434343;
+    --textColorDark-grey: #111111;
+
+    /* 🟤🟤🟤 */
+    --bg-color-brown: #dfc28d;
+    --accentLightTint-brown: #eae3c9;
+    --darkerColor-brown: #4e3930;
+    --darkColor-brown: #705347;
+    --textColorDark-brown: #16100d;
+
+    /* ⚪ Silver */
+	--bg-color-silver: #c0c0c0;
+	--accentLightTint-silver: #e5e5e5;
+	--darkerColor-silver: #6f6f6f;
+	--darkColor-silver: #9e9e9e;
+	--textColorDark-silver: #333333;
+
     /* ⚫⚫⚫ */
     --bg-color-dark: #171615;
     --accentLightTint-dark: #3c3c3c;
@@ -155,7 +176,7 @@
  }
 
 .spacer {
-    height: 65px; /* Adjust this value to create space */
+    height: 110px; /* Adjust this value to create space */
 }
 
 /* Theme */
@@ -1858,8 +1879,20 @@ input:checked + .toggle:before {
     background-color: #EC5E78;
 }
 
-.colorsContainer input[value="dark"] {
-    background-color: #434343;
+.colorsContainer input[value="brown"] {
+    background-color: #705347;
+}
+
+.colorsContainer input[value="silver"] {
+	background-color: #9e9e9e;
+}
+
+.colorsContainer input[value="grey"] {
+     background-color: #585858;
+ }
+
+ .colorsContainer input[value="dark"] {
+    background-color: #171717;
 }
 
 .colorsContainer input[type="radio"]:checked::after {
@@ -1892,10 +1925,10 @@ input:checked + .toggle:before {
     align-items: center;
 }
 
-#darkTheme {
-    grid-column: span 2;
-    width: 82px;
-}
+/* #darkTheme {
+     grid-column: span 2;
+     width: 82px;
+ } */
 
 /* -----------end of theming stuff---------------- */
 
