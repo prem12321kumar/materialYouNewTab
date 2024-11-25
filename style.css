@@ -87,7 +87,7 @@
     --darkColor-purple: #9563B5;
     --textColorDark-purple: #2D1B3E;
 
-    /* 🩶🩶🩶 */
+    /* 🩶🩶🩶 Grey */
     --bg-color-grey: #565656;
     --accentLightTint-grey: #818181;
     --darkerColor-grey: #262626;
@@ -100,6 +100,13 @@
     --darkerColor-brown: #4e3930;
     --darkColor-brown: #705347;
     --textColorDark-brown: #16100d;
+
+    /* ⚪ Silver */
+	--bg-color-silver: #c0c0c0;
+	--accentLightTint-silver: #e5e5e5;
+	--darkerColor-silver: #6f6f6f;
+	--darkColor-silver: #9e9e9e;
+	--textColorDark-silver: #333333;
 
     /* ⚫⚫⚫ */
     --bg-color-dark: #171615;
@@ -1872,16 +1879,20 @@ input:checked + .toggle:before {
     background-color: #EC5E78;
 }
 
+.colorsContainer input[value="brown"] {
+    background-color: #705347;
+}
+
+.colorsContainer input[value="silver"] {
+	background-color: #9e9e9e;
+}
+
 .colorsContainer input[value="grey"] {
-     background-color: #595959;
+     background-color: #585858;
  }
 
  .colorsContainer input[value="dark"] {
-    background-color: #191919;
-}
-
-.colorsContainer input[value="brown"] {
-    background-color: #705347;
+    background-color: #171717;
 }
 
 .colorsContainer input[type="radio"]:checked::after {
