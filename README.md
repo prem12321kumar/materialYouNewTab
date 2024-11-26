@@ -87,7 +87,7 @@ Material You NewTab is a versatile browser extension that personalizes your New 
 |--------------------------------------------------------------------------------------------|------|----------------------------------------------------------------------------------------|
 | <img src='https://flagcdn.com/us.svg' width=20> &nbsp; **English**                         |&nbsp; en | [XengShi](https://github.com/XengShi/), [Prem](https://github.com/prem-k-r/)           |
 | <img src='https://flagcdn.com/bd.svg' width=20> &nbsp; **Bangla** - বাংলা                   |&nbsp; bn | [It'z RJ](https://github.com/itz-rj-here/), [Prem](https://github.com/prem-k-r/)       |
-| <img src='https://flagcdn.com/cn.svg' width=20> &nbsp; **Chinese** (Simplified) - 中文     | zh-CN    | [Guy Berryman](https://github.com/Guy-Berryman)                                        |
+| <img src='https://flagcdn.com/cn.svg' width=20> &nbsp; **Chinese** (Simplified) - 中文     | zh-CN    | [Guy Berryman](https://github.com/Guy-Berryman), [Tianli](https://github.com/TIANLI0)       |
 | <img src='https://flagcdn.com/cz.svg' width=20> &nbsp; **Czech** - Čeština                 |&nbsp; cz | [Michal Šmahel](https://github.com/ceskyDJ/)                                           |
 | <img src='https://flagcdn.com/in.svg' width=20> &nbsp; **Hindi** - हिंदी                     |&nbsp; hi | [XengShi](https://github.com/XengShi/), [Prem](https://github.com/prem-k-r/)           |
 | <img src='https://flagcdn.com/id.svg' width=20> &nbsp; **Indonesian** - Bahasa Indonesia   |   idn    | [Ayyas-RF](https://github.com/Ayyas-RF/)                                               |
@@ -132,6 +132,7 @@ Material You NewTab is a versatile browser extension that personalizes your New 
      - Ensure you’ve cloned the repository or downloaded the ZIP file and extracted it.
    
    - **Open Extensions Page**:
+     Open your preferred browser and enter the following text in the address bar
      - ![Chrome](https://img.icons8.com/color/20/000000/chrome--v1.png) Chrome: `chrome://extensions`
 
      -  ![Edge](https://img.icons8.com/?size=20&id=dGm9KIZPpukc&format=png&color=000000) Edge: `edge://extensions`
