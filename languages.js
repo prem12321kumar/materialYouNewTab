@@ -18,8 +18,9 @@ const translations = {
         "shortcutsText": "Shortcuts",
         "enableShortcutsText": "Show saved shortcuts",
         "editShortcutsText": "Edit Shortcuts",
-        "editShortcutsList": "Saved Shortcuts",
         "shortcutsInfoText": "Choose which shortcuts get shown",
+        "editShortcutsList": "Saved Shortcuts",
+        'editShortcutsListInfo': 'You can add new shortcuts by clicking the "+" icon or edit existing ones by clicking on the shortcut name or URL',
         "adaptiveIconText": "Adaptive Icon Shapes",
         "adaptiveIconInfoText": "Shortcut icons will appear smaller",
         "ai_tools_button": "AI-Tools",
@@ -56,7 +57,7 @@ const translations = {
         "InputOptionsButton": "Input options",
         "saveLoc": "Save",
         // Weather
-        "WeatherApiText": "Enter your WeatherAPI key",
+        "WeatherApiText": "Enter your WeatherAPI key",    // For 'WeatherAPI' string, only transliterate it
         "WeatherApiSubtext": "If the weather functionality isn't working",
         "userAPI": "Your weatherAPI key",
         "LearnMoreButton": "Learn more",
@@ -83,7 +84,7 @@ const translations = {
         "searchWithHint": "Search With",
         "ai_tools": "AI Tools",
         "userText": "Click here to edit",
-        "googleAppsHover": "Google Apps",  // Keep untranslated if text width is longer
+        "googleAppsHover": "Google Apps",    // Keep this untranslated if string width is much longer
         // End of Body and New Tab Items
 
         // Greeting
@@ -156,7 +157,7 @@ const translations = {
         "InputOptionsButton": "Opções de Entrada",
         "saveLoc": "Salvar",
         // Weather
-        "WeatherApiText": "Insira sua própria chave da API de Clima",
+        "WeatherApiText": "Insira sua própria chave do WeatherAPI",
         "WeatherApiSubtext": "Se a funcionalidade do clima não estiver funcionando",
         "userAPI": "Sua chave da WeatherAPI",
         "LearnMoreButton": "Saiba Mais",
@@ -194,7 +195,6 @@ const translations = {
     },
 
     // Chinese (Simplified)
-    // Machine translated some elements, please verify and delete this comment
     "zh": {
         // Menu Items
         "feedback": "反馈",
@@ -202,49 +202,49 @@ const translations = {
         "menuCloseText": "关闭",
         // Shortcuts
         "shortcutsText": "快捷方式",
-        "enableShortcutsText": "启用/禁用快捷方式",
+        "enableShortcutsText": "显示已保存的快捷方式",
         "editShortcutsText": "编辑快捷方式",
-        "editShortcutsList": "编辑快捷方式",
+        "editShortcutsList": "已保存的快捷方式",
         "shortcutsInfoText": "选择要显示的快捷方式",
         "adaptiveIconText": "自适应图标形状",
-        "adaptiveIconInfoText": "快捷方式图标将始终为圆形",
-        "ai_tools_button": "AI工具",
-        "enable_ai_tools": "显示AI工具快捷方式",
+        "adaptiveIconInfoText": "快捷方式图标将显示为圆形",
+        "ai_tools_button": "AI 工具",
+        "enable_ai_tools": "显示 AI 工具快捷方式",
         "googleAppsMenuText": "谷歌应用",
         "googleAppsMenuInfo": "显示谷歌应用的快捷方式",
         // Digital Clock
         "digitalclocktittle": "数字时钟",
-        "digitalclockinfo": "启用/禁用数字时钟",
-        "timeformattittle": "使用12小时格式",
-        "timeformatinfo": "使用12小时制时间格式",
-        "greetingtittle": "问候",
-        "greetinginfo": "在自定义文本下显示问候",
+        "digitalclockinfo": "切换到数字时钟",
+        "timeformattittle": "12 小时制",
+        "timeformatinfo": "使用 12 小时制时间格式",
+        "greetingtittle": "问候语",
+        "greetinginfo": "在自定义文本下显示问候语",
         // Misc
-        "userTextTitle": "可自定义文本",
+        "userTextTitle": "自定义文本",
         "userTextInfo": "在时钟下方显示自定义文本",
         "fahrenheitCelsiusCheckbox": "切换到华氏温度",
-        "fahrenheitCelsiusText": "刷新页面以查看更新",
+        "fahrenheitCelsiusText": "刷新页面以应用更改",
         "micIconTitle": "隐藏麦克风图标",
-        "micIconInfo": "如果语音输入不起作用",
+        "micIconInfo": "如果语音输入无法使用",
         "search_suggestions_button": "搜索建议",
-        "search_suggestions_text": "启用/禁用搜索建议",
+        "search_suggestions_text": "启用搜索建议",
         // Proxy
         "useproxytitletext": "代理绕过",
         "useproxyText": "如果搜索建议无法正常工作",
-        "ProxyText": "CORS绕过代理",
-        "ProxySubtext": "添加您自己的CORS绕过代理",
+        "ProxyText": "CORS 绕过代理",
+        "ProxySubtext": "添加您的地址以绕过CORS限制",
         "HostproxyButton": "托管您自己的代理",
         "saveproxy": "保存",
         // Location
         "UserLocText": "输入您的位置",
         "UserLocSubtext": "如果天气位置不正确",
-        "userLoc": "您的位置（城市/纬度，经度）",
+        "userLoc": "您的城市或坐标（纬度，经度）",
         "InputOptionsButton": "输入选项",
         "saveLoc": "保存",
         // Weather
-        "WeatherApiText": "输入您自己的天气API密钥",
+        "WeatherApiText": "输入您的 WeatherAPI 密钥",
         "WeatherApiSubtext": "如果天气功能无法正常工作",
-        "userAPI": "您的天气API密钥",
+        "userAPI": "您的 WeatherAPI 密钥",
         "LearnMoreButton": "了解更多",
         "saveAPI": "保存",
         // End of Menu Items
@@ -262,34 +262,26 @@ const translations = {
         // End of Weather
 
         // New Tab Item
-        "conditionText": "你好！今天怎么样？",
+        "conditionText": "你好！今天感觉怎么样？",
         "enterBtn": "搜索",
         "searchPlaceholder": "输入搜索内容...",
         "listenPlaceholder": "正在聆听...",
         "searchWithHint": "搜索引擎",
-        "ai_tools": "AI工具",
-        "userText": "点击这里编辑",
+        "ai_tools": "AI 工具",
+        "userText": "点击这里以编辑",
         // End of Body and New Tab Items
 
         // Greeting
         greeting: {
-            "morning": "早上好!",
-            "afternoon": "下午好!",
-            "evening": "晚上好!"
+            "morning": "早上好！",
+            "afternoon": "下午好！",
+            "evening": "晚上好！"
         },
 
         // Search Engines and rest
         "googleEngine": "谷歌",
-        "duckEngine": "达克达狗",
+        "duckEngine": "DuckDuckGo",
         "bingEngine": "必应",
-        "braveEngine": "布雷夫",
-        "youtubeEngine": "优兔",
-        "chatGPT": "查特吉皮提",
-        "gemini": "双美尼",
-        "copilot": "科波莱特",
-        "perplexity": "佩尔普雷克西蒂",
-        "firefly": " 阿多比 火萤",
-        "github": "吉特哈布",
         "googleAppsHover": "谷歌应用",
     },
 
@@ -303,8 +295,9 @@ const translations = {
         "shortcutsText": "शॉर्टकट्स",
         "enableShortcutsText": "सहेजे गए शॉर्टकट प्रदर्शित करें",
         "editShortcutsText": "शॉर्टकट्स संपादित करें",
-        "editShortcutsList": "सहेजे गए शॉर्टकट",
         "shortcutsInfoText": "निर्धारित करें कि कौन से शॉर्टकट प्रदर्शित किए जाएँ",
+        "editShortcutsList": "सहेजे गए शॉर्टकट",
+        'editShortcutsListInfo': 'आप "+" आइकन पर क्लिक करके नए शॉर्टकट्स जोड़ सकते हैं या शॉर्टकट के नाम या URL पर क्लिक करके मौजूदा शॉर्टकट्स को संपादित कर सकते हैं',
         "adaptiveIconText": "अनुकूल आइकन आकृतियाँ",
         "adaptiveIconInfoText": "शॉर्टकट आइकन छोटे आकार में प्रदर्शित करें",
         "ai_tools_button": "AI-उपकरण",
@@ -613,9 +606,9 @@ const translations = {
         "InputOptionsButton": "Girdi Seçenekleri",
         "saveLoc": "Kaydet",
         // Weather
-        "WeatherApiText": "Kendi Hava Durumu API anahtarınızı girin",
+        "WeatherApiText": "Kendi WeatherAPI anahtarınızı girin",
         "WeatherApiSubtext": "Hava durumu işlevi çalışmıyorsa",
-        "userAPI": "Hava Durumu API anahtarınız",
+        "userAPI": "WeatherAPI anahtarınız",
         "LearnMoreButton": "Daha Fazla Bilgi Edinin",
         "saveAPI": "Kaydet",
         // End of Menu Items
@@ -660,8 +653,9 @@ const translations = {
         "shortcutsText": "শর্টকাট",
         "enableShortcutsText": "সংরক্ষিত শর্টকাটগুলি প্রদর্শন করুন",
         "editShortcutsText": "শর্টকাট সম্পাদনা করুন",
-        "editShortcutsList": "সংরক্ষিত শর্টকাট",
         "shortcutsInfoText": "যেসব শর্টকাট প্রদর্শিত হবে তা নির্বাচন করুন",
+        "editShortcutsList": "সংরক্ষিত শর্টকাট",
+        'editShortcutsListInfo': 'আপনি "+" আইকনে ক্লিক করে নতুন শর্টকাট যোগ করতে পারেন অথবা শর্টকাটের নাম বা URL-এ ক্লিক করে বিদ্যমান শর্টকাট সম্পাদনা করতে পারেন',
         "adaptiveIconText": "অ্যাডাপ্টিভ আইকন আকার",
         "adaptiveIconInfoText": "শর্টকাট আইকন ছোট আকারে প্রদর্শন হবে",
         "ai_tools_button": "AI সরঞ্জাম",
@@ -1398,8 +1392,9 @@ const translations = {
         "shortcutsText": "शॉर्टकट्स",
         "enableShortcutsText": "जतन केलेले शॉर्टकट दाखवा",
         "editShortcutsText": "शॉर्टकट्स संपादित करा",
-        "editShortcutsList": "जतन केलेले शॉर्टकट्स",
         "shortcutsInfoText": "कोणते शॉर्टकट दाखवायचे ते निवडा",
+        "editShortcutsList": "जतन केलेले शॉर्टकट्स",
+        'editShortcutsListInfo': 'आपण "+" आयकॉनवर क्लिक करून नवीन शॉर्टकट्स जोडू शकता किंवा शॉर्टकटच्या नावावर किंवा URL वर क्लिक करून विद्यमान शॉर्टकट्स संपादित करू शकता',
         "adaptiveIconText": "अनुकूल आयकॉन आकार",
         "adaptiveIconInfoText": "शॉर्टकट आयकॉन छोटे दिसतील",
         "ai_tools_button": "AI साधने",
@@ -1493,7 +1488,7 @@ const translations = {
 // Define the width of the menu container for each language
 const menuWidths = {
     en: '400px',
-    pt: '415px',
+    pt: '470px',
     uz: '455px',
     vi: '445px',
     cs: '452px',
@@ -1503,6 +1498,7 @@ const menuWidths = {
     ru: '450px',
     it: '437px',
     idn: '415px',
+    tr: '418px',
     // Add more languages and widths as needed
 };
 
@@ -1538,8 +1534,9 @@ function applyLanguage(lang) {
         { id: 'shortcutsText', key: 'shortcutsText' },
         { id: 'enableShortcutsText', key: 'enableShortcutsText' },
         { id: 'editShortcutsText', key: 'editShortcutsText' },
-        { id: 'editShortcutsList', key: 'editShortcutsList' },
         { id: 'shortcutsInfoText', key: 'shortcutsInfoText' },
+        { id: 'editShortcutsList', key: 'editShortcutsList' },
+        { id: 'editShortcutsListInfo', key: 'editShortcutsListInfo' },
         { id: 'adaptiveIconText', key: 'adaptiveIconText' },
         { id: 'adaptiveIconInfoText', key: 'adaptiveIconInfoText' },
         { id: 'ai_tools_button', key: 'ai_tools_button' },
@@ -1633,6 +1630,21 @@ function applyLanguage(lang) {
     const menuCont = document.querySelector('.menuBar .menuCont');
     if (menuCont) {
         menuCont.style.width = menuWidths[lang] || menuWidths['en'];
+    }
+
+    // Function to update padding of Feedback tile based on the selected language       
+    const menuTileFeedback = document.getElementById('menuTileFeedback');
+    const iconElement = menuTileFeedback?.querySelector('.icon');
+    if (menuTileFeedback) {
+        if (['idn', 'ja', 'ru', 'tr', 'uz'].includes(lang)) {
+            menuTileFeedback.style.paddingRight = '0';  // Set padding-right to 0 for specified languages
+            iconElement.style.marginLeft = '0px';   // Set margin-left to 0 for .icon inside #menuTileFeedback
+            iconElement.style.marginRight = '8px';
+        } else {
+            menuTileFeedback.style.paddingRight = '';   // Reset padding-right for other languages
+            iconElement.style.marginLeft = '';     // Reset margin-left for other languages
+            iconElement.style.marginRight = '';
+        }
     }
 
     // Save the selected language in localStorage
