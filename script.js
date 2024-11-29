@@ -623,7 +623,7 @@ document.addEventListener('click', function (event) {
     }
 });
 
-//search function
+// Search function
 document.addEventListener("DOMContentLoaded", () => {
     const enterBTN = document.getElementById("enterBtn");
     const searchInput = document.getElementById("searchQ");
@@ -822,7 +822,6 @@ if (!micIconCheckbox.checked) {
     initializeSpeechRecognition();
 }
 //  -----------End of Voice Search------------
-
 
 // Function to apply the selected theme
 const radioButtons = document.querySelectorAll('.colorPlate');
@@ -1080,7 +1079,7 @@ const applySelectedTheme = (colorValue) => {
         "brown": "./favicon/brown.png",
         "silver": "./favicon/silver.png",
         "grey": "./favicon/grey.png",
-        "dark": "./favicon/dark.png",  
+        "dark": "./favicon/dark.png", 
     };
 
     // Function to update the extension icon based on browser
@@ -1115,9 +1114,7 @@ radioButtons.forEach(radioButton => {
     });
 });
 
-
 // end of Function to apply the selected theme
-
 
 // when User click on "AI-Tools"
 const element = document.getElementById("toolsCont");
@@ -1446,7 +1443,6 @@ document.getElementById("menuCloseButton").onclick = () => {
 // ---------------------------------------------------------
 document.addEventListener("DOMContentLoaded", function () {
 
-
     /* ------ Constants ------ */
 
     // maximum number of shortcuts allowed
@@ -1528,7 +1524,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 height: calc(100% / sqrt(2)) !important;
                 width: calc(100% / sqrt(2)) !important;
                 }`;
-
 
     /* ------ Element selectors ------ */
 
@@ -1613,7 +1608,6 @@ document.addEventListener("DOMContentLoaded", function () {
         element.innerHTML = localStorage.getItem(key);
     }
 
-
     /* ------ Loading shortcuts ------ */
 
     /**
@@ -1659,7 +1653,6 @@ document.addEventListener("DOMContentLoaded", function () {
             applyShortcut(newSettingsEntry);
         }
     }
-
 
     /* ------ Creating shortcut elements ------ */
 
@@ -1743,7 +1736,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return shortcutContainer;
     }
 
-
     /* ------ Attaching event listeners to shortcut settings ------ */
 
     /**
@@ -1779,7 +1771,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
-
 
     /* ------ Saving and applying changes to shortcuts ------ */
 
@@ -1906,7 +1897,6 @@ document.addEventListener("DOMContentLoaded", function () {
         loadShortcuts();
     }
 
-
     /* ------ Shortcut favicon handling ------ */
 
     /**
@@ -2022,6 +2012,7 @@ document.addEventListener("DOMContentLoaded", function () {
             saveActiveStatus("adaptiveIconField", "inactive");
         }
     });
+
     searchsuggestionscheckbox.addEventListener("change", function () {
         saveCheckboxState("searchsuggestionscheckboxState", searchsuggestionscheckbox);
         if (searchsuggestionscheckbox.checked) {
@@ -2070,6 +2061,7 @@ document.addEventListener("DOMContentLoaded", function () {
             saveActiveStatus("greetingField", "inactive");
         }
     });
+
     hourcheckbox.addEventListener("change", function () {
         saveCheckboxState("hourcheckboxState", hourcheckbox);
         if (hourcheckbox.checked) {
@@ -2078,10 +2070,12 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem("hourformat", "false");
         }
     });
+
     greetingCheckbox.addEventListener("change", () => {
         localStorage.setItem("greetingEnabled", greetingCheckbox.checked);
         updatedigiClock();
     });
+
     useproxyCheckbox.addEventListener("change", function () {
         if (useproxyCheckbox.checked) {
             // Show the disclaimer and check the user's choice
@@ -2102,6 +2096,7 @@ document.addEventListener("DOMContentLoaded", function () {
             saveActiveStatus("proxyinputField", "inactive");
         }
     });
+
     adaptiveIconToggle.addEventListener("change", function () {
         saveCheckboxState("adaptiveIconToggle", adaptiveIconToggle);
         if (adaptiveIconToggle.checked) {
