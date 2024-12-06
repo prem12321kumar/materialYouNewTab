@@ -1531,6 +1531,12 @@ body {
 	margin-right: 13px;
 }
 
+.menuTile {
+	display: flex;
+	width: 100%;
+	align-items: center;
+}
+
 .divider {
 	height: 6px;
 	width: 100px;
