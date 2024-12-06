@@ -1685,6 +1685,19 @@ function applyLanguage(lang) {
         menuCont.style.width = menuWidths[lang] || menuWidths['en'];
     }
 
+    // Update margin of Feedback tile icon based on the selected language       
+    const menuTileFeedback = document.getElementById('menuTileFeedback');
+    const iconElement = menuTileFeedback?.querySelector('.icon');
+    if (menuTileFeedback) {
+        if (['idn', 'ja', 'ru', 'tr', 'uz'].includes(lang)) {
+            iconElement.style.marginLeft = '10px';
+            iconElement.style.marginRight = '9px';
+        } else {
+            iconElement.style.marginLeft = '';
+            iconElement.style.marginRight = '';
+        }
+    }
+
     // Save the selected language in localStorage
     saveLanguageStatus('selectedLanguage', lang);
 }
