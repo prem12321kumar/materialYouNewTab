@@ -26,6 +26,32 @@
         root.style.setProperty('--transparency', `${Math.round(Number(savedOpacity))}%`);
     }
 
+    // --- Font preference preload ---
+    const savedFont = localStorage.getItem('selectedFont');
+    const customFont = localStorage.getItem('customFontName');
+    if (savedFont && savedFont !== 'default') {
+        const defaultStack = "'poppins', 'Poppins', sans-serif";
+        if (savedFont === 'system') {
+            root.style.setProperty('--main-font-family', "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif");
+        } else {
+            const fontName = savedFont === 'custom' ? customFont : savedFont;
+            if (fontName) {
+                const link = document.createElement('link');
+                link.id = `google-font-${fontName.toLowerCase().replace(/[^a-z0-9]/g, '-')}`;
+                link.rel = 'stylesheet';
+                link.href = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(fontName.trim().replace(/ /g, '+'))}:wght@300;400;500;600;700&display=swap`;
+                document.head.appendChild(link);
+                root.style.setProperty('--main-font-family', `"${fontName}", ${defaultStack}`);
+            }
+        }
+    }
+
+    // --- Font weight preference preload ---
+    const savedFontWeight = localStorage.getItem('selectedFontWeight');
+    if (savedFontWeight) {
+        root.style.setProperty('--main-font-weight', savedFontWeight);
+    }
+
     // Watch for the <body> to be created and instantly set it to "wallpaper" before the screen paints
     // if (localStorage.getItem('hasWallpaper') === 'true') {
     //     const observer = new MutationObserver(function () {

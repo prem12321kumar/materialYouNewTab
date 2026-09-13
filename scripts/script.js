@@ -6,7 +6,43 @@
  * If not, see <https://www.gnu.org/licenses/>.
  */
 
-// ------------------------------------ Tips ------------------------------------
+// Function to update tips content based on current language and browser/OS
+function updateTipsContent() {
+    const lang = window.currentLanguage || localStorage.getItem("selectedLanguage") || "en";
+
+    // Determine the correct key for adjustZoomInfo based on OS
+    const adjustZoomInfo = document.getElementById("adjustZoomInfo");
+    if (adjustZoomInfo) {
+        let adjustZoomInfoText = translations[lang]?.adjustZoomInfo || translations["en"].adjustZoomInfo;
+        if (typeof isMac !== "undefined" && isMac) {
+            adjustZoomInfoText = adjustZoomInfoText.replace(/Ctrl/g, "⌘");
+        }
+        adjustZoomInfo.textContent = adjustZoomInfoText;
+    }
+
+    // Change browser theme info based on the user's browser
+    const changeBrowserThemeInfo = document.getElementById("changeBrowserThemeInfo");
+    if (changeBrowserThemeInfo) {
+        if (typeof isFirefoxAll !== "undefined" && isFirefoxAll) {
+            changeBrowserThemeInfo.innerHTML = translations[lang]?.firefoxThemeInfo || translations["en"].firefoxThemeInfo;
+        } else if (typeof isEdge !== "undefined" && isEdge) {
+            changeBrowserThemeInfo.innerHTML = translations[lang]?.edgeThemeInfo || translations["en"].edgeThemeInfo;
+        } else if (typeof isBrave !== "undefined" && isBrave) {
+            changeBrowserThemeInfo.innerHTML = translations[lang]?.braveThemeInfo || translations["en"].braveThemeInfo;
+        } else {
+            changeBrowserThemeInfo.innerHTML = translations[lang]?.chromeThemeInfo || translations["en"].chromeThemeInfo;
+        }
+    }
+
+    const firefoxHomepage = document.getElementById("firefoxHomepage");
+    const updateFirefoxHomepageInfo = document.getElementById("updateFirefoxHomepageInfo");
+    if (updateFirefoxHomepageInfo && typeof isFirefox !== "undefined" && isFirefox) {
+        if (firefoxHomepage) firefoxHomepage.style.display = "block";
+        updateFirefoxHomepageInfo.innerHTML = translations[lang]?.updateFirefoxHomepageInfo || translations["en"].updateFirefoxHomepageInfo;
+    }
+}
+window.updateTipsContent = updateTipsContent;
+
 document.addEventListener("DOMContentLoaded", function () {
     // Hide tips that are not relevant to mobile
     if (!isDesktop) {
@@ -14,32 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("hideTips", "true");
     }
 
-    // Determine the correct key for adjustZoomInfo based on OS
-    const adjustZoomInfo = document.getElementById("adjustZoomInfo");
-    let adjustZoomInfoText = translations[currentLanguage]?.adjustZoomInfo || translations["en"].adjustZoomInfo;
-    if (isMac) {
-        adjustZoomInfoText = adjustZoomInfoText.replace(/Ctrl/g, "⌘");
-    }
-    adjustZoomInfo.textContent = adjustZoomInfoText;
-
-    // Change browser theme info based on the user's browser
-    const changeBrowserThemeInfo = document.getElementById("changeBrowserThemeInfo");
-    if (isFirefoxAll) {
-        changeBrowserThemeInfo.innerHTML = translations[currentLanguage]?.firefoxThemeInfo || translations["en"].firefoxThemeInfo;
-    } else if (isEdge) {
-        changeBrowserThemeInfo.innerHTML = translations[currentLanguage]?.edgeThemeInfo || translations["en"].edgeThemeInfo;
-    } else if (isBrave) {
-        changeBrowserThemeInfo.innerHTML = translations[currentLanguage]?.braveThemeInfo || translations["en"].braveThemeInfo;
-    } else {
-        changeBrowserThemeInfo.innerHTML = translations[currentLanguage]?.chromeThemeInfo || translations["en"].chromeThemeInfo;
-    }
-
-    const firefoxHomepage = document.getElementById("firefoxHomepage");
-    const updateFirefoxHomepageInfo = document.getElementById("updateFirefoxHomepageInfo");
-    if (isFirefox) {
-        firefoxHomepage.style.display = "block";
-        updateFirefoxHomepageInfo.innerHTML = translations[currentLanguage]?.updateFirefoxHomepageInfo || translations["en"].updateFirefoxHomepageInfo;
-    }
+    updateTipsContent();
 
     // Hide tips
     const tips = document.getElementById("tips");

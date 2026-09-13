@@ -1,4 +1,5 @@
 const sv = {
+    "newTabTitle": "Ny flik",
     // Menu Items
     "github": "GitHub",
     "feedback": "Feedback",
@@ -17,9 +18,9 @@ const sv = {
     "editShortcutsText": "Redigera genvägar",
     "shortcutsInfoText": "Välj vilka genvägar som ska visas",
     "editShortcutsList": "Sparade genvägar",
-    "editShortcutsListInfo": "Du kan lägga till genvägar genom att klicka på \"+\"-ikonen eller ändra befintliga genvägar genom att klicka på deras namn eller adress.",
+    "editShortcutsListInfo": "Du kan lägga till genvägar genom att klicka på \"+\"-ikonen eller ändra befintliga genvägar genom att klicka på deras namn eller adress.\nFör att återställa en anpassad ikon, rensa bildadressen.",
     "adaptiveIconText": "Adaptiva ikoner",
-    "adaptiveIconInfoText": "Genvägarnas ikoner anpassas efter temat.",
+    "adaptiveIconInfoText": "Genvägarnas ikoner anpassas efter temat",
     "bookmarksText": "Bokmärken",
     "bookmarksInfo": "Visa bokmärkespanel",
     "ai_tools_button": "AI-verktyg",
@@ -29,6 +30,12 @@ const sv = {
     "googleAppsMenuText": "Google-appar",
     "googleAppsMenuInfo": "Visa genvägar för Google-appar",
     "googleAppsHover": "Google-appar",
+
+    "shortcutDefaultName": "Ny genväg",
+    "shortcutInputName": "Genvägsnamn",
+    "shortcutInputUrl": "Genvägs-URL",
+    "shortcutInputIcon": "Anpassad ikon: URL eller SVG (valfritt)",
+    "recentlyAddedBookmarks": "Nyligen tillagda",
 
     // To-do List
     "todoListText": "Att göra-lista",
@@ -49,6 +56,8 @@ const sv = {
     // Misc
     "userTextTitle": "Anpassningsbar text",
     "userTextInfo": "Visa anpassad text under klockan",
+    "fontTitle": "Typsnittsfamilj",
+    "fontDesc": "Välj ett typsnitt eller ange ett anpassat typsnitt",
     "fahrenheitCelsiusCheckbox": "Byt till Fahrenheit",
     "fahrenheitCelsiusText": "Uppdatera sidan för att tillämpa ändringar",
     "hideWeatherTitle": "Dölj väder",
@@ -61,10 +70,14 @@ const sv = {
     // Search
     "micIconTitle": "Dölj mikrofonikon",
     "micIconInfo": "Om röstinmatning inte fungerar",
+    "aiModeIconTitle": "Dölj AI-lägesknapp",
+    "aiModeIconInfo": "Dölj Googles AI-lägessökknapp",
     "hideSearchWith": "Dölj sökmotorer",
     "hideSearchWithInfo": "Växla mellan sökmotorer genom att klicka på deras ikon",
     "motivationalQuotesText": "Motiverande citat",
     "motivationalQuotesInfo": "Visa citat under sökfältet",
+    "newQuoteOnRefreshText": "Dagens citat",
+    "newQuoteOnRefreshInfo": "Visa ett citat per dag istället för att uppdatera varje gång",
     "search_suggestions_button": "Sökförslag",
     "search_suggestions_text": "Aktivera sökförslag",
 
@@ -91,6 +104,7 @@ const sv = {
     "saveAPI": "Spara",
 
     // Body Items
+    // Calendar
     "days": ['Söndag', 'Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag'],
     "months": ['Januari', 'Februari', 'Mars', 'April', 'Maj', 'Juni', 'Juli', 'Augusti', 'September', 'Oktober', 'November', 'December'],
 
@@ -122,9 +136,12 @@ const sv = {
 
     // Greeting
     greeting: {
+        "lateNight": "Uppe sent och jobbar!",
+        "earlyMorning": "Ha en fin morgon!",
         "morning": "God morgon!",
         "afternoon": "God eftermiddag!",
-        "evening": "God kväll!"
+        "evening": "God kväll!",
+        "night": "God natt!"
     },
 
     // Search Engines
@@ -175,16 +192,40 @@ const sv = {
     "adjustZoom": "Justera zoom",
     "adjustZoomInfo": "Tryck Ctrl + \"+\" eller Ctrl + \"-\" för att ändra zoomnivå.",
     "changeBrowserTheme": "Ändra webbläsartema",
+    "chromeThemeInfo": "Klicka på de tre punkterna (⋮) > Fler verktyg > Anpassa Chrome och välj sedan en färg som matchar tilläggets tema.",
+    "edgeThemeInfo": "Gå till Inställningar > Utseende och välj sedan en färg som matchar tilläggets tema.",
+    "braveThemeInfo": "Besök <a href=\"https://chromewebstore.google.com/category/themes/\" target=\"_blank\">Chrome Web Store Teman</a>, ladda ner och tillämpa temat som matchar tillägget.",
+    "firefoxThemeInfo": "Besök <a href=\"https://addons.mozilla.org/firefox/themes/\" target=\"_blank\">Firefox-teman</a>, ladda ner och tillämpa temat som matchar tillägget.",
+    "updateFirefoxHomepage": "Uppdatera startsida",
+    "updateFirefoxHomepageInfo": "För att även ändra din startsida till den nya fliken, besök <a href=\"https://github.com/prem-k-r/MaterialYouNewTab#-firefox\" target=\"_blank\">den här länken</a> och följ anvisningarna.",
     "dontShowTips": "Visa inte igen",
 
     // Footer Toast
     "footerToastTitle": "Ser du en banner längst ner?",
     "footerToastMessage": "För att dölja den, högerklicka och välj 'Dölj sidfot på ny flik'.",
 
-    // Dialog boxes
+    // Dialog boxes (alerts)
     "okText": "OK",
     "yesText": "Ja",
     "noText": "Nej",
     "agreeText": "Jag godkänner",
-    "cancelText": "Avbryt"
+    "cancelText": "Avbryt",
+    "confirmWallpaper": "Vill du ställa in en ny bild som dagens bakgrundsbild?",
+    "confirmRestore": "Är du säker på att du vill återställa dina inställningar? Denna åtgärd kan inte ångras.",
+    "Nobackgroundset": "Ingen bakgrundsbild är för närvarande vald.",
+    "clearbackgroundimage": "Är du säker på att du vill ta bort bakgrundsbilden?",
+    "ProxyDisclaimer": "Alla proxyfunktioner är avstängda som standard.\n\nOm du aktiverar sökförslag och CORS-proxy rekommenderas det starkt att du hostar din egen proxy för ökad integritet.\n\nSom standard sätts proxyn till https://mynt-proxy.rhythmcorehq.com, vilket innebär att alla dina data går genom den tjänsten.",
+    "GPSDisclaimer": "Dina platsuppgifter används endast för att ge korrekta väderuppdateringar. De lagras tillfälligt i webbläsaren och delas inte med tredje part.\n\nGenom att aktivera GPS samtycker du till att dela din plats med tillägget lokalt.",
+    "failedbackup": "Säkerhetskopiering misslyckades: ",
+    "restorecompleted": "Återställningen slutfördes framgångsrikt!",
+    "restorefailed": "Återställningen misslyckades: ",
+    "invalidBackup": "Ogiltig säkerhetskopieringsfil vald.",
+    "deleteBookmark": "Är du säker på att du vill ta bort bokmärket \"{title}\"?",
+    "UnsupportedBrowser": "Bokmärken stöds inte i din webbläsare.",
+    "resetShortcutsPrompt": "Alla sparade genvägar kommer att raderas och återställas till standard. Vill du fortsätta?",
+    "invalidFileTypeMessage": "Välj en giltig bildfil.",
+    "invalidSvgMessage": "Den infogade SVG-filen är ogiltig eller innehåller osäkert innehåll och kan inte användas som ikon.",
+    "invalidIconUrlMessage": "Ange en giltig bildadress (måste börja med https://, http:// eller data:image/).",
+    "iconFileTooLargeMessage": "Den valda filen är för stor: {size} KB. Använd en fil som är mindre än {max} KB.",
+    "iconStorageQuotaMessage": "Ikonen kunde inte sparas eftersom lagringsgränsen har nåtts. Ta bort några anpassade ikoner eller använd en mindre bild."
 };

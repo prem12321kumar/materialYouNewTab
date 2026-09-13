@@ -15,11 +15,22 @@ const opacityBarControl = document.getElementById("opacityBarControl");
 // Set slider position and update CSS variable for transparency
 function setSliderPosition(percentage) {
     const posPercent = Math.min(100, Math.max(20, percentage));
+    const lang = window.currentLanguage || localStorage.getItem("selectedLanguage") || "en";
     slider.style.width = `${posPercent}%`;
-    opacityLevel.textContent = `${localizeNumbers(Math.round(posPercent).toString(), currentLanguage)}%`;
+    opacityLevel.textContent = `${localizeNumbers(Math.round(posPercent).toString(), lang)}%`;
     document.documentElement.style.setProperty("--transparency", `${Math.round(posPercent)}%`);
     localStorage.setItem("bgOpacity", posPercent);
 }
+
+function refreshOpacityDisplay(targetLang) {
+    const currentOpacity = parseFloat(localStorage.getItem("bgOpacity")) || 90;
+    const lang = targetLang || window.currentLanguage || localStorage.getItem("selectedLanguage") || "en";
+    const levelEl = document.getElementById("opacityLevel");
+    if (levelEl) {
+        levelEl.textContent = `${localizeNumbers(Math.round(currentOpacity).toString(), lang)}%`;
+    }
+}
+window.refreshOpacityDisplay = refreshOpacityDisplay;
 
 // Handle drag or click interaction on opacity bar
 function handleDrag(e) {

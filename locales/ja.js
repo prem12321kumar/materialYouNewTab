@@ -19,7 +19,7 @@ const ja = {
     "editShortcutsText": "ショートカットを編集",
     "shortcutsInfoText": "表示するショートカットを選択",
     "editShortcutsList": "保存されたショートカット",
-    "editShortcutsListInfo": "\"+\" アイコンをクリックして新しいショートカットを追加したり、名前やURLをクリックして既存のものを編集できます。\nアイコンをリセットするには、画像のURLを空にしてください。",
+    "editShortcutsListInfo": "\"+\" アイコンをクリックして新しいショートカットを追加したり、名前やURLをクリックして既存のものを編集できます。\nカスタムアイコンをリセットするには、画像のURLを空にしてください。",
     "adaptiveIconText": "アダプティブアイコン",
     "adaptiveIconInfoText": "ショートカットアイコンをテーマに適応させます",
     "bookmarksText": "ブックマーク",
@@ -57,6 +57,8 @@ const ja = {
     // Misc
     "userTextTitle": "カスタムテキスト",
     "userTextInfo": "時計の下にカスタムテキストを表示",
+    "fontTitle": "フォントファミリー",
+    "fontDesc": "フォントを選択するか、カスタムフォントを入力してください",
     "fahrenheitCelsiusCheckbox": "華氏に切り替え",
     "fahrenheitCelsiusText": "変更を適用するにはページを再読み込みしてください",
     "hideWeatherTitle": "天気を非表示",
@@ -67,8 +69,10 @@ const ja = {
     "minMaxTempSubText": "「体感温度」を最低・最高気温に置き換える",
 
     // Search
-    "micIconTitle": "マイクアイコンを非表示",
+    "micIconTitle": "マイクボタンを非表示",
     "micIconInfo": "音声入力が動作しない場合",
+    "aiModeIconTitle": "AIモードボタンを非表示",
+    "aiModeIconInfo": "Google AIモード検索ボタンを非表示にする",
     "hideSearchWith": "検索エンジンを隠す",
     "hideSearchWithInfo": "アイコンをクリックして検索エンジンを切り替える",
     "motivationalQuotesText": "モチベーションの名言",
@@ -116,26 +120,29 @@ const ja = {
     "bookmarkSearch": "ブックマークを検索",
     "editBookmarkHeading": "ブックマークを編集",
     "editBookmarkName": "ブックマーク名",
-    "editBookmarkURL": "ブックマークのURL",
+    "editBookmarkURL": "ブックマークURL",
 
     // New Tab Item
-    "conditionText": "こんにちは！本日の調子はいかがですか？",
+    "conditionText": "こんにちは！今日の調子はいかがですか？",
     "humidityLevel": "湿度",
     "feelsLike": "体感",
     "minMaxTemp": "最低 ~ 最高",
     "location": "地球",
     "enterBtn": "検索",
-    "searchPlaceholder": "検索キーワードを入力...",
-    "listenPlaceholder": "聴き取り中...",
-    "searchWithHint": "検索モード",
-    "searchOnHint": "次で検索",
-    "userText": "ここをクリックして編集",
+    "searchPlaceholder": "ここに入力...",
+    "listenPlaceholder": "聞き取り中...",
+    "searchWithHint": "検索方法",
+    "searchOnHint": "検索対象",
+    "userText": "クリックして編集",
 
     // Greeting
     greeting: {
+        "lateNight": "夜遅くまでお疲れ様です！",
+        "earlyMorning": "素晴らしい朝をお迎えください！",
         "morning": "おはようございます！",
         "afternoon": "こんにちは！",
-        "evening": "こんばんは！"
+        "evening": "こんばんは！",
+        "night": "おやすみなさい！"
     },
 
     // Search Engines
@@ -182,7 +189,7 @@ const ja = {
 
     // Tips
     "switchSearchModes": "検索モードを切り替え",
-    "switchSearchModesInfo": "「検索モード」をクリックしてモードを変更できます。",
+    "switchSearchModesInfo": "「検索方法」をクリックしてモードを変更できます。",
     "adjustZoom": "ズーム調整",
     "adjustZoomInfo": "Ctrl + 「+」またはCtrl + 「-」でズームを調整できます。",
     "changeBrowserTheme": "ブラウザテーマを変更",

@@ -48,6 +48,92 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// Function to update weather labels and text immediately when language changes
+function updateWeatherLabels(targetLang) {
+    const lang = targetLang || window.currentLanguage || localStorage.getItem("selectedLanguage") || "en";
+    const isMinMaxEnabled = localStorage.getItem("minMaxTempEnabled") === "true";
+    const isRTL = typeof rtlLanguages !== "undefined" && rtlLanguages.includes(lang);
+
+    const conditionEl = document.getElementById("conditionText");
+    const humidityEl = document.getElementById("humidityLevel");
+    const locationEl = document.getElementById("location");
+    const feelsLikeEl = document.getElementById("feelsLike");
+
+    let parsedData = null;
+    try {
+        parsedData = JSON.parse(localStorage.getItem("weatherParsedData"));
+    } catch (e) {}
+
+    if (parsedData && parsedData.current) {
+        const humidity = parsedData.current.humidity;
+        const localizedHumidity = localizeNumbers(humidity.toString(), lang);
+        const humidityLabel = translations[lang]?.humidityLevel || translations["en"].humidityLevel;
+        if (humidityEl) {
+            humidityEl.textContent = isRTL
+                ? `${humidityLabel} %${localizedHumidity}`
+                : `${humidityLabel} ${localizedHumidity}%`;
+        }
+
+        if (feelsLikeEl) {
+            const fahrenheitCheckbox = document.getElementById("fahrenheitCheckbox");
+            const isFahrenheit = fahrenheitCheckbox ? fahrenheitCheckbox.checked : false;
+            const feelsLikeLabel = translations[lang]?.feelsLike || translations["en"].feelsLike;
+
+            if (isMinMaxEnabled && parsedData.forecast?.forecastday?.[0]?.day) {
+                const minTempC = parsedData.forecast.forecastday[0].day.mintemp_c;
+                const maxTempC = parsedData.forecast.forecastday[0].day.maxtemp_c;
+                const minTempF = parsedData.forecast.forecastday[0].day.mintemp_f;
+                const maxTempF = parsedData.forecast.forecastday[0].day.maxtemp_f;
+                const rangeSeparator = { cs: "až", default: "~" };
+                const sep = rangeSeparator[lang] || rangeSeparator.default;
+                if (isFahrenheit) {
+                    feelsLikeEl.textContent = `${localizeNumbers(minTempF.toString(), lang)} ${sep} ${localizeNumbers(maxTempF.toString(), lang)}°F`;
+                } else {
+                    feelsLikeEl.textContent = `${localizeNumbers(minTempC.toString(), lang)} ${sep} ${localizeNumbers(maxTempC.toString(), lang)}°C`;
+                }
+            } else {
+                const feelsLikeVal = isFahrenheit ? parsedData.current.feelslike_f : parsedData.current.feelslike_c;
+                const unit = isFahrenheit ? (lang === "cs" ? " °F" : "°F") : (lang === "cs" ? " °C" : "°C");
+                feelsLikeEl.textContent = isRTL
+                    ? `${localizeNumbers(feelsLikeVal.toString(), lang)}${unit} ${feelsLikeLabel}`
+                    : `${feelsLikeLabel} ${localizeNumbers(feelsLikeVal.toString(), lang)}${unit}`;
+            }
+        }
+
+        const isLocationHidden = localStorage.getItem("locationHidden") === "true";
+        if (locationEl) {
+            if (isLocationHidden) {
+                locationEl.textContent = translations[lang]?.location || translations["en"].location;
+            } else {
+                const city = parsedData.location?.name || "";
+                locationEl.textContent = city.length > 10 ? city.slice(0, 10) + "..." : city;
+            }
+        }
+
+        const tempEl = document.getElementById("temp");
+        if (tempEl && tempEl.textContent && tempEl.textContent !== "?") {
+            const fahrenheitCheckbox = document.getElementById("fahrenheitCheckbox");
+            const isFahrenheit = fahrenheitCheckbox ? fahrenheitCheckbox.checked : false;
+            const tempVal = isFahrenheit ? parsedData.current.temp_f : parsedData.current.temp_c;
+            tempEl.textContent = localizeNumbers(tempVal.toString(), lang);
+            const tempUnit = document.createElement("span");
+            tempUnit.className = "tempUnit";
+            tempUnit.textContent = isFahrenheit ? "°F" : "°C";
+            tempEl.appendChild(tempUnit);
+        }
+    } else {
+        if (conditionEl) conditionEl.textContent = translations[lang]?.conditionText || translations["en"].conditionText;
+        if (humidityEl) humidityEl.textContent = translations[lang]?.humidityLevel || translations["en"].humidityLevel;
+        if (locationEl) locationEl.textContent = translations[lang]?.location || translations["en"].location;
+        if (feelsLikeEl) {
+            feelsLikeEl.textContent = isMinMaxEnabled
+                ? (translations[lang]?.minMaxTemp || translations["en"].minMaxTemp)
+                : (translations[lang]?.feelsLike || translations["en"].feelsLike);
+        }
+    }
+}
+window.updateWeatherLabels = updateWeatherLabels;
+
 async function getWeatherData() {
     // Display texts 
     document.getElementById("conditionText").textContent = translations[currentLanguage]?.conditionText || translations["en"].conditionText;

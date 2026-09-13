@@ -23,6 +23,8 @@ and this project partially follows [Semantic Versioning](https://semver.org/spec
 - Added keyboard shortcuts (`Alt + 1`–`9`) to quickly open the first nine shortcuts ([@smurf11k](https://github.com/smurf11k)) ([#237](https://github.com/prem-k-r/MaterialYouNewTab/pull/237))
 - Added Google AI Mode search button to the search bar when using Google as the search engine ([@KomeshBathula](https://github.com/KomeshBathula))
 - Updated the search bar to bypass search engines and navigate directly to webpages when the input contains no spaces and begins strictly with `http://`, `https://`, or `www.` ([@prem-k-r](https://github.com/prem-k-r)) ([#255](https://github.com/prem-k-r/MaterialYouNewTab/pull/255))
+- Added custom font family and font weight selection with 200+ curated Google Fonts, category filters, font search, and custom font input ([@syed-sameer-ul-hassan](https://github.com/syed-sameer-ul-hassan)) ([#261](https://github.com/prem-k-r/MaterialYouNewTab/pull/261))
+- Added expanded time-based greetings across 6 distinct timeframes with fallback logic ([@syed-sameer-ul-hassan](https://github.com/syed-sameer-ul-hassan)) ([#261](https://github.com/prem-k-r/MaterialYouNewTab/pull/261))
 
 ### Improved
 
@@ -33,6 +35,7 @@ and this project partially follows [Semantic Versioning](https://semver.org/spec
 - Improved fallback behavior of shortcut icons to first-letter icons when custom icons fail to load or when offline ([@prem-k-r](https://github.com/prem-k-r)) ([#187](https://github.com/prem-k-r/MaterialYouNewTab/pull/187/))
 - Disabled dragging for weather and location icons ([@anndiy](https://github.com/anndiy)) ([#183](https://github.com/prem-k-r/MaterialYouNewTab/pull/183))
 - Added support for right-click to access AI Tools settings ([@prem-k-r](https://github.com/prem-k-r)) ([#210](https://github.com/prem-k-r/MaterialYouNewTab/pull/210/))
+- Redesigned the language selector into an interactive, searchable grid with native language names and active badges ([@syed-sameer-ul-hassan](https://github.com/syed-sameer-ul-hassan)) ([#261](https://github.com/prem-k-r/MaterialYouNewTab/pull/261))
 
 ### Fixed
 
@@ -40,6 +43,7 @@ and this project partially follows [Semantic Versioning](https://semver.org/spec
 - Fixed shortcut name and URLs hover behavior by replacing ellipsis with clipped text for improved readability ([@prem-k-r](https://github.com/prem-k-r)) ([283f78d](https://github.com/prem-k-r/MaterialYouNewTab/pull/199/changes/283f78d6e4b202a075ca3d670c1b30cbc701c3a4))
 - Fixed wallpaper disappearing on load due to blob URL being revoked too early ([@prem-k-r](https://github.com/prem-k-r)) ([#209](https://github.com/prem-k-r/MaterialYouNewTab/pull/209))
 - Fixed the page briefly flashing blue (FOUC) when opening a new tab by applying saved themes before the page renders ([@itz-rj-here](https://github.com/itz-rj-here)) ([#238](https://github.com/prem-k-r/MaterialYouNewTab/pull/238))
+- Fixed contrast and color styling on active toggles and selection pills across light and dark themes ([@syed-sameer-ul-hassan](https://github.com/syed-sameer-ul-hassan)) ([#261](https://github.com/prem-k-r/MaterialYouNewTab/pull/261))
 
 ### Localized
 
@@ -63,6 +67,8 @@ and this project partially follows [Semantic Versioning](https://semver.org/spec
 - Added support for Ukrainian ([@lozik4](https://github.com/lozik4)) ([#106](https://github.com/prem-k-r/MaterialYouNewTab/pull/106))
 - Added support for Swedish ([@empohello-imamempogitub](https://github.com/empohello-imamempogitub)) ([#179](https://github.com/prem-k-r/MaterialYouNewTab/pull/179))
 - Localized New Tab title ([@prem-k-r](https://github.com/prem-k-r))
+- Added support for Ottoman Turkish (`ota-tr`) with RTL layout and localized numerals ([@syed-sameer-ul-hassan](https://github.com/syed-sameer-ul-hassan)) ([#261](https://github.com/prem-k-r/MaterialYouNewTab/pull/261))
+- Updated missing translations for font settings, weather strings, shortcuts, and greetings across all locales ([@syed-sameer-ul-hassan](https://github.com/syed-sameer-ul-hassan)) ([#261](https://github.com/prem-k-r/MaterialYouNewTab/pull/261))
 
 ### Other
 

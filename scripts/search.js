@@ -59,6 +59,16 @@ searchWith.addEventListener("click", function (event) {
     }, 300);
 });
 
+function updateSearchModeHint(targetLang) {
+    const searchWith = document.getElementById("searchWithHint");
+    if (!searchWith) return;
+    const lang = targetLang || window.currentLanguage || localStorage.getItem("selectedLanguage") || "en";
+    const mode = localStorage.getItem("activeSearchMode") || "search-with";
+    const searchModeName = mode === "search-with" ? "searchWithHint" : "searchOnHint";
+    searchWith.innerText = translations[lang]?.[searchModeName] || translations["en"]?.[searchModeName] || "Search With";
+}
+window.updateSearchModeHint = updateSearchModeHint;
+
 function toggleSearchEngines(category) {
     const defaultItems = {
         "search-with": "engine0",
@@ -66,7 +76,8 @@ function toggleSearchEngines(category) {
     };
     const checkeditem = localStorage.getItem(`selectedSearchEngine-${category}`) || defaultItems[category];
     const searchModeName = category === "search-with" ? "searchWithHint" : "searchOnHint";
-    searchWith.innerText = translations[currentLanguage]?.[searchModeName] || translations["en"][searchModeName];
+    const lang = window.currentLanguage || localStorage.getItem("selectedLanguage") || "en";
+    searchWith.innerText = translations[lang]?.[searchModeName] || translations["en"][searchModeName];
 
     searchEngines.forEach(engine => {
         if (engine.getAttribute("data-category") === category) {

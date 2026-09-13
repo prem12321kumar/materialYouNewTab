@@ -57,6 +57,8 @@ const en = {
     // Misc
     "userTextTitle": "Customizable Text",
     "userTextInfo": "Show custom text below the clock",
+    "fontTitle": "Font Family",
+    "fontDesc": "Choose a font or enter a custom font",
     "fahrenheitCelsiusCheckbox": "Switch to Fahrenheit",
     "fahrenheitCelsiusText": "Refresh the page to apply changes",
     "hideWeatherTitle": "Hide Weather",
@@ -135,9 +137,12 @@ const en = {
 
     // Greeting
     greeting: {
+        "lateNight": "Working Late!",
+        "earlyMorning": "Have a Great Morning!",
         "morning": "Good Morning!",
         "afternoon": "Good Afternoon!",
-        "evening": "Good Evening!"
+        "evening": "Good Evening!",
+        "night": "Good Night!"
     },
 
     // Search Engines

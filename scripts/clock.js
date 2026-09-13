@@ -169,6 +169,8 @@ async function initializeClock() {
                 de: `${dayName}, ${dayOfMonth}. ${monthName}`,
                 fa: `${dayName}، ${localizedDayOfMonth} ${monthName}`, // e.g., شنبه، ۲۵ اسفند
                 ar_SA: `${dayName}, ${localizedDayOfMonth} ${monthName}`,	// e.g., الجمعة, 31 مايو
+                ota_TR: `${dayName}، ${localizedDayOfMonth} ${monthName}`,
+                "ota-tr": `${dayName}، ${localizedDayOfMonth} ${monthName}`,
                 el: `${dayName.substring(0, 3)} ${dayOfMonth} ${monthName}`, // Κυρ 22 Δεκ
                 th: `วัน${dayName}ที่ ${dayOfMonth} ${monthName}`, // วันอาทิตย์ที่ 22 ธันวาคม
                 uk: `${dayName}, ${dayOfMonth} ${monthName.substring(0, 4)}`,
@@ -238,24 +240,43 @@ async function initializeClock() {
         updateDate();
     }
 
+    //update greeting
     function getGreeting() {
         const currentHour = new Date().getHours();
         let greetingKey;
 
-        // Determine the greeting key based on the current hour
-        if (currentHour < 12) {
+        if (currentHour >= 0 && currentHour < 5) {
+            greetingKey = "lateNight";
+        } else if (currentHour >= 5 && currentHour < 8) {
+            greetingKey = "earlyMorning";
+        } else if (currentHour >= 8 && currentHour < 12) {
             greetingKey = "morning";
-        } else if (currentHour < 17) {
+        } else if (currentHour >= 12 && currentHour < 17) {
             greetingKey = "afternoon";
-        } else {
+        } else if (currentHour >= 17 && currentHour < 21) {
             greetingKey = "evening";
+        } else {
+            greetingKey = "night";
         }
 
         // Get the user's language setting
         const currentLanguage = getLanguageStatus("selectedLanguage") || "en"; // Default to English
 
-        // Return the translated greeting is available
-        return translations[currentLanguage]?.greeting?.[greetingKey] ?? translations["en"].greeting[greetingKey];
+        // Fallback key for any language that only has traditional morning/afternoon/evening
+        let fallbackKey = "morning";
+        if (currentHour >= 12 && currentHour < 17) {
+            fallbackKey = "afternoon";
+        } else if (currentHour >= 17) {
+            fallbackKey = "evening";
+        }
+
+        // Return the translated greeting if available, falling back gracefully
+        return (
+            translations[currentLanguage]?.greeting?.[greetingKey] ??
+            translations[currentLanguage]?.greeting?.[fallbackKey] ??
+            translations["en"]?.greeting?.[greetingKey] ??
+            translations["en"]?.greeting?.[fallbackKey]
+        );
     }
 
     function updatedigiClock() {
@@ -301,6 +322,8 @@ async function initializeClock() {
             de: `${dayOfMonth}. ${dayName}`,
             fa: `${dayName} ${localizedDayOfMonth}`, // e.g. شنبه ۲۵
             ar_SA: `${dayName}, ${localizedDayOfMonth}`,	// e.g., الجمعة, 31
+            ota_TR: `${dayName}، ${localizedDayOfMonth}`,
+            "ota-tr": `${dayName}، ${localizedDayOfMonth}`,
             el: `${dayName.substring(0, 3)} ${dayOfMonth}`, // Κυρ 22
             th: `${dayName}ที่ ${dayOfMonth}`,
             uk: `${dayOfMonth} ${dayName}`,
@@ -362,6 +385,8 @@ async function initializeClock() {
                 period = realHours < 12 ? "ق.ظ" : "ب.ظ"; // قبل از ظهر / بعد از ظهر
             } else if (currentLanguage === "ar_SA") {
                 period = realHours < 12 ? "ص" : "م"; // صباحاً / مساءً
+            } else if (currentLanguage === "ota_TR" || currentLanguage === "ota-tr" || currentLanguage === "ota") {
+                period = realHours < 12 ? "ق.ظ" : "ب.ظ"; // قبل ظهر / بعد ظهر
             } else if (currentLanguage === "ta") {
                 if (realHours < 2) {
                     period = "யாமம்"
@@ -392,15 +417,18 @@ async function initializeClock() {
 
         const clocktype1 = localStorage.getItem("clocktype");
         const dateElement = document.getElementById("date");
-        if (clocktype1 === "digital" && isGreetingEnabled) {
-            const newGreeting = getGreeting();
-            if (newGreeting !== lastGreetingString) {
+        if (clocktype1 === "digital") {
+            if (isGreetingEnabled) {
                 dateElement.style.display = "block";
-                dateElement.innerText = newGreeting;
-                lastGreetingString = newGreeting;
+                const newGreeting = getGreeting();
+                if (newGreeting !== lastGreetingString) {
+                    dateElement.innerText = newGreeting;
+                    lastGreetingString = newGreeting;
+                }
+            } else {
+                dateElement.style.display = "none";
+                lastGreetingString = null;
             }
-        } else if (clocktype1 === "digital") {
-            dateElement.style.display = "none";  // Hide the greeting
         }
     }
 
@@ -489,6 +517,18 @@ async function initializeClock() {
         updateDate();
     }
 
+    // Exported function to refresh clock strings immediately when language changes
+    window.refreshClockLocale = function () {
+        lastDateString = null;
+        lastDigitalDateString = null;
+        lastGreetingString = null;
+        try { updateDate(); } catch (e) { console.error(e); }
+        try { updatedigiClock(); } catch (e) { console.error(e); }
+    };
+    window.updateDate = updateDate;
+    window.updatedigiClock = updatedigiClock;
+    window.getGreeting = getGreeting;
+
     // Save and load toggle state
     document.addEventListener("DOMContentLoaded", function () {
         const timeformatField = document.getElementById("timeformatField");
@@ -545,6 +585,7 @@ async function initializeClock() {
 
         greetingCheckbox.addEventListener("change", () => {
             localStorage.setItem("greetingEnabled", greetingCheckbox.checked);
+            lastGreetingString = null;
             updatedigiClock();
         });
 

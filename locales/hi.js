@@ -24,10 +24,10 @@ const hi = {
     "adaptiveIconInfoText": "शॉर्टकट आइकन थीम से मेल खाते हुए दिखेंगे",
     "bookmarksText": "बुकमार्क्स",
     "bookmarksInfo": "बुकमार्क्स साइडबार दिखाएँ",
-    "ai_tools_button": "AI उपकरण",
-    "enable_ai_tools": "AI उपकरणों के शॉर्टकट्स प्रदर्शित करें",
-    "aiToolsSettingsText": "AI उपकरण सेटिंग्स",
-    "aiToolsSettingsInfo": "AI उपकरणों के शॉर्टकट्स प्रबंधित करें",
+    "ai_tools_button": "एआई टूल्स",
+    "enable_ai_tools": "एआई टूल्स के शॉर्टकट्स प्रदर्शित करें",
+    "aiToolsSettingsText": "एआई टूल्स सेटिंग्स",
+    "aiToolsSettingsInfo": "एआई टूल्स के शॉर्टकट्स प्रबंधित करें",
     "googleAppsMenuText": "गूगल ऐप्स",
     "googleAppsMenuInfo": "गूगल ऐप्स के शॉर्टकट्स प्रदर्शित करें",
     "googleAppsHover": "गूगल ऐप्स",
@@ -57,6 +57,8 @@ const hi = {
     // Misc
     "userTextTitle": "कस्टमाइज़ेबल टेक्स्ट",
     "userTextInfo": "घड़ी के नीचे कस्टम टेक्स्ट दिखाएँ",
+    "fontTitle": "फ़ॉन्ट परिवार",
+    "fontDesc": "फ़ॉन्ट चुनें या अपनी पसंद का फ़ॉन्ट दर्ज करें",
     "fahrenheitCelsiusCheckbox": "तापमान फ़ारेनहाइट में बदलें",
     "fahrenheitCelsiusText": "बदलाव के लिए पृष्ठ को रीफ्रेश करें",
     "hideWeatherTitle": "मौसम छिपाएँ",
@@ -67,8 +69,10 @@ const hi = {
     "minMaxTempSubText": "अनुभूत तापमान की जगह न्यूनतम और अधिकतम तापमान दिखाएँ",
 
     // Search
-    "micIconTitle": "माइक्रोफोन आइकन छिपाएँ",
+    "micIconTitle": "माइक्रोफ़ोन आइकन छिपाएँ",
     "micIconInfo": "अगर वॉइस टाइपिंग काम नहीं कर रहा है",
+    "aiModeIconTitle": "एआई मोड बटन छिपाएँ",
+    "aiModeIconInfo": "गूगल एआई मोड खोज बटन छिपाएँ",
     "hideSearchWith": "सर्च इंजन छिपाएँ",
     "hideSearchWithInfo": "आइकन पर क्लिक करके सर्च इंजन बदलें",
     "motivationalQuotesText": "प्रेरणादायक उद्धरण",
@@ -102,42 +106,43 @@ const hi = {
 
     // Body Items
     // Calendar
-    "days": ['रवि', 'सोम', 'मंगल', 'बुध', 'गुरु', 'शुक्र', 'शनि'],   // Truncated for display
-    // "days": ['रविवार', 'सोमवार', 'मंगलवार', 'बुधवार', 'गुरुवार', 'शुक्रवार', 'शनिवार'],  // Full
+    "days": ['रविवार', 'सोमवार', 'मंगलवार', 'बुधवार', 'गुरुवार', 'शुक्रवार', 'शनिवार'],
     "months": ['जनवरी', 'फ़रवरी', 'मार्च', 'अप्रैल', 'मई', 'जून', 'जुलाई', 'अगस्त', 'सितम्बर', 'अक्टूबर', 'नवंबर', 'दिसंबर'],
-    // "months": ['जन', 'फर', 'मार्च', 'अप्र', 'मई', 'जून', 'जुला', 'अग', 'सित', 'अक्टू', 'नव', 'दिस'],   // Truncated
 
     // Bookmarks
     "bookmarksHeading": "बुकमार्क्स",
     "bookmarkSortBy": "क्रमबद्ध करें",
-    "sortAlphabetical": "A-Z",
+    "sortAlphabetical": "अ-ह",
     "sortTimeAdded": "पुराना-नया",
     "bookmarkViewAs": "इस रूप में देखें",
     "bookmarkViewGrid": "ग्रिड",
-    "bookmarkViewList": "लिस्ट",
+    "bookmarkViewList": "सूची",
     "bookmarkSearch": "बुकमार्क खोजें",
     "editBookmarkHeading": "बुकमार्क संपादित करें",
-    "editBookmarkName": "बुकमार्क नाम",
+    "editBookmarkName": "बुकमार्क का नाम",
     "editBookmarkURL": "बुकमार्क URL",
 
     // New Tab Item
-    "conditionText": "नमस्ते! आप आज कैसे हैं?",
+    "conditionText": "नमस्ते! आज आप कैसे हैं?",
     "humidityLevel": "नमी",
-    "feelsLike": "महसूस",
-    "minMaxTemp": "न्यून ~ अधिक",
+    "feelsLike": "अनुभूत",
+    "minMaxTemp": "न्यूनतम ~ अधिकतम",
     "location": "पृथ्वी",
-    "enterBtn": "सर्च करें",
+    "enterBtn": "खोजें",
     "searchPlaceholder": "यहाँ लिखें...",
-    "listenPlaceholder": "सुन रहे हैं...",
-    "searchWithHint": "खोज माध्यम",
-    "searchOnHint": "खोज स्रोत",
-    "userText": "यहाँ अपना टेक्स्ट लिखें",
+    "listenPlaceholder": "सुन रहा है...",
+    "searchWithHint": "के माध्यम से खोजें",
+    "searchOnHint": "पर खोजें",
+    "userText": "संपादित करने के लिए यहाँ क्लिक करें",
 
     // Greeting
     greeting: {
-        "morning": "सुप्रभात!",
-        "afternoon": "शुभ अपराह्न!",
-        "evening": "शुभ संध्या!"
+        "lateNight": "देर रात तक काम!",
+        "earlyMorning": "शुभ प्रभात!",
+        "morning": "शुभ प्रभात!",
+        "afternoon": "शुभ दोपहर!",
+        "evening": "शुभ संध्या!",
+        "night": "शुभ रात्रि!"
     },
 
     // Search Engines
@@ -147,24 +152,24 @@ const hi = {
     "bingEngine": "बिंग",
     "braveEngine": "ब्रेव",
     "youtubeEngine": "यूट्यूब",
-    "gImagesEngine": "इमेज",
+    "gImagesEngine": "चित्र",
     "redditEngine": "रेडिट",
     "wikipediaEngine": "विकिपीडिया",
-    "quoraEngine": "क्वोरा",
+    "quoraEngine": "कोरा",
 
     // AI Tools
-    "ai_tools": "AI उपकरण",
-    "chatGPT": "चैटGPT",
-    "gemini": "जेमिनी",
-    "copilot": "कोपायलट",
-    "claude": "क्लॉड",
-    "grok": "ग्रोक",
-    "qwen": "क्वेन",
-    "perplexity": "पर्प्लेक्सिटी",
-    "deepseek": "डीपसीक",
-    "metaAI": "मेटा AI",
-    "firefly": "एडोबी फायरफ्लाई",
-    "aiSettingsIntro": "चुनें की कौन से AI शॉर्टकट्स रखने हैं",
+    "ai_tools": "एआई टूल्स",
+    "chatGPT": "ChatGPT",
+    "gemini": "Gemini",
+    "copilot": "Copilot",
+    "claude": "Claude",
+    "grok": "Grok",
+    "qwen": "Qwen",
+    "perplexity": "Perplexity",
+    "deepseek": "DeepSeek",
+    "metaAI": "Meta AI",
+    "firefly": "Adobe Firefly",
+    "aiSettingsIntro": "प्रदर्शित करने के लिए एआई टूल्स चुनें",
     "resetAISettingsBtn": "रीसेट करें",
 
     // Theme
@@ -184,16 +189,16 @@ const hi = {
 
     // Tips
     "switchSearchModes": "खोज मोड बदलें",
-    "switchSearchModesInfo": "मोड बदलने के लिए ‘खोज माध्यम’ पर क्लिक करें।",
+    "switchSearchModesInfo": "मोड बदलने के लिए ‘के माध्यम से खोजें’ पर क्लिक करें।",
     "adjustZoom": "ज़ूम समायोजित करें",
     "adjustZoomInfo": "ज़ूम समायोजित करने के लिए Ctrl + \"+\" या Ctrl + \"-\" दबाएँ।",
     "changeBrowserTheme": "ब्राउज़र थीम बदलें",
     "chromeThemeInfo": "तीन बिंदु (⋮) पर क्लिक करें > अधिक टूल्स > क्रोम को कस्टमाइज़ करें, फिर एक्सटेंशन थीम से मेल खाने वाला रंग चुनें।",
-    "edgeThemeInfo": "सेटिंग्स > रूपरंग (Appearance) पर जाएं, फिर एक्सटेंशन थीम से मेल खाने वाला रंग चुनें।",
-    "braveThemeInfo": ' <a href="https://chromewebstore.google.com/category/themes/" target="_blank">क्रोम थीम स्टोर</a> पर जाएं, उपयुक्त थीम डाउनलोड करें और लागू करें।',
+    "edgeThemeInfo": "सेटिंग्स > रूपरंग पर जाएं, फिर एक्सटेंशन थीम से मेल खाने वाला रंग चुनें।",
+    "braveThemeInfo": '<a href="https://chromewebstore.google.com/category/themes/" target="_blank">क्रोम थीम स्टोर</a> पर जाएं, उपयुक्त थीम डाउनलोड करें और लागू करें।',
     "firefoxThemeInfo": '<a href="https://addons.mozilla.org/firefox/themes/" target="_blank">फ़ायरफ़ॉक्स थीम्स</a> पर जाएँ, अपनी पसंद की थीम डाउनलोड करें और उसे लागू करें।',
     "updateFirefoxHomepage": "होमपेज अपडेट करें",
-    "updateFirefoxHomepageInfo": 'अपने होमपेज को भी नए टैब की तरह बदलने के लिए, <a href="https://github.com/prem-k-r/MaterialYouNewTab#-firefox\" target="_blank">इस लिंक</a> पर जाएं और दिए गए निर्देशों का पालन करें।',
+    "updateFirefoxHomepageInfo": 'अपने होमपेज को भी नए टैब की तरह बदलने के लिए, <a href="https://github.com/prem-k-r/MaterialYouNewTab#-firefox" target="_blank">इस लिंक</a> पर जाएं और दिए गए निर्देशों का पालन करें।',
     "dontShowTips": "इसे फिर से न दिखाएँ",
 
     // Footer Toast
@@ -216,12 +221,12 @@ const hi = {
     "restorecompleted": "पुनर्स्थापना सफलतापूर्वक पूरी हुई!",
     "restorefailed": "पुनर्स्थापना विफल: ",
     "invalidBackup": "अमान्य बैकअप फ़ाइल चयनित है।",
-    "deleteBookmark": "क्या आप \"{title}\" बुकमार्क डिलीट करना चाहते हैं?",
+    "deleteBookmark": "क्या आप \"{title}\" बुकमार्क हटाना चाहते हैं?",
     "UnsupportedBrowser": "आपके ब्राउज़र में बुकमार्क समर्थित नहीं हैं।",
     "resetShortcutsPrompt": "सभी सहेजे गए शॉर्टकट हटा दिए जाएंगे और डिफ़ॉल्ट पर रीसेट हो जाएंगे। क्या आप जारी रखना चाहते हैं?",
     "invalidFileTypeMessage": "कृपया एक मान्य छवि फ़ाइल चुनें।",
     "invalidSvgMessage": "अमान्य SVG या इसमें असुरक्षित सामग्री है और इसे आइकन के रूप में उपयोग नहीं किया जा सकता।",
     "invalidIconUrlMessage": "कृपया एक मान्य छवि URL दर्ज करें (https://, http://, या data:image/ से शुरू होना चाहिए)।",
     "iconFileTooLargeMessage": "चयनित फ़ाइल बहुत बड़ी है: {size} KB। कृपया {max} KB से छोटी फ़ाइल का उपयोग करें।",
-    "iconStorageQuotaMessage": "आइकन सहेजा नहीं जा सका क्योंकि स्टोरेज सीमा पूरी हो गई है। कृपया छोटा चित्र उपयोग करें।"
+    "iconStorageQuotaMessage": "आइकन सहेजा नहीं जा सका क्योंकि स्टोरेज सीमा पूरी हो गई है। कृपया कुछ कस्टम आइकन हटाएँ या छोटा चित्र उपयोग करें।"
 };

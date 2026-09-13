@@ -8,8 +8,10 @@
 
 
 // Get the current language from localStorage
-const currentLanguage = localStorage.getItem("selectedLanguage") || "en";
-const isRTL = rtlLanguages.includes(currentLanguage);
+var currentLanguage = localStorage.getItem("selectedLanguage") || "en";
+window.currentLanguage = currentLanguage;
+var isRTL = rtlLanguages.includes(currentLanguage);
+window.isRTL = isRTL;
 
 // ------------Showing & Hiding Menu-bar ---------------
 const menuButton = document.getElementById("menuButton");
@@ -145,3 +147,13 @@ backButton.onclick = () => {
         shortcutEditPage.style.display = "none";
     }, 650);
 }
+
+// Reopen menu bar if language change triggered a reload
+document.addEventListener("DOMContentLoaded", () => {
+    if (sessionStorage.getItem("reopenSettingsMenu") === "true") {
+        sessionStorage.removeItem("reopenSettingsMenu");
+        setTimeout(() => {
+            openMenuBar();
+        }, 120);
+    }
+});

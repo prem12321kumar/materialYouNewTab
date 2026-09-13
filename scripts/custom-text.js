@@ -27,13 +27,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const savedLang = localStorage.getItem("selectedLanguage") || "en";
     applyLanguage(savedLang);
 
-    // Load the stored text if it exists
+    // Load the stored text if it exists and is custom
     const storedValue = localStorage.getItem("userText");
-    if (storedValue) {
+    const isDefaultPlaceholder = storedValue && Object.values(translations).some(t => t?.userText === storedValue);
+    if (storedValue && !isDefaultPlaceholder) {
         userTextDiv.textContent = storedValue;
     } else {
+        if (isDefaultPlaceholder) localStorage.removeItem("userText");
         // Fallback to the placeholder based on the selected language
-        const placeholder = userTextDiv.dataset.placeholder || translations["en"].userText; // Fallback to English
+        const placeholder = userTextDiv.dataset.placeholder || translations[savedLang]?.userText || translations["en"].userText;
         userTextDiv.textContent = placeholder;
     }
 

@@ -68,19 +68,20 @@ function initializeSpeechRecognition() {
         const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
         recognition.continuous = false;  // Stop recognition after first result
         recognition.interimResults = true; // Enable interim results for live transcription
-        recognition.lang = currentLanguage; // Set the language dynamically based on selected language
+        recognition.lang = window.currentLanguage || currentLanguage; // Set the language dynamically based on selected language
 
         let isRecognizing = false; // Flag to check if recognition is active
 
         // When speech recognition starts
         recognition.onstart = () => {
             isRecognizing = true; // Set the flag to indicate recognition is active
+            const lang = window.currentLanguage || getLanguageStatus("selectedLanguage") || "en";
             const selectedRadio = document.querySelector(".colorPlate:checked");
             if (selectedRadio.value !== "dark") {
                 micIcon.style.color = "var(--darkerColor-blue)";
                 // micIcon.style.transform = "scale(1.05)";
             }
-            searchInput.placeholder = `${translations[currentLanguage]?.listenPlaceholder || translations["en"].listenPlaceholder}`;
+            searchInput.placeholder = `${translations[lang]?.listenPlaceholder || translations["en"].listenPlaceholder}`;
             micIcon.classList.add("micActive");
         };
 
@@ -113,7 +114,8 @@ function initializeSpeechRecognition() {
             micIcon.style.color = "var(--darkColor-blue)"; // Reset mic color
             // micIcon.style.transform = "scale(1)"; // Reset scaling
             micIcon.classList.remove("micActive");
-            searchInput.placeholder = `${translations[currentLanguage]?.searchPlaceholder || translations["en"].searchPlaceholder}`;
+            const lang = window.currentLanguage || getLanguageStatus("selectedLanguage") || "en";
+            searchInput.placeholder = `${translations[lang]?.searchPlaceholder || translations["en"].searchPlaceholder}`;
         };
 
         // Start speech recognition when mic icon is clicked
@@ -121,6 +123,7 @@ function initializeSpeechRecognition() {
             if (isRecognizing) {
                 recognition.stop(); // Stop recognition if it's already listening
             } else {
+                recognition.lang = window.currentLanguage || getLanguageStatus("selectedLanguage") || "en";
                 recognition.start(); // Start recognition if it's not already listening
             }
         });
